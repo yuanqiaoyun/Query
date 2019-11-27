@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../../Content/element-ui-212.css" />
+  <link rel="stylesheet" href="../../Content/reset.css" />
+  <link rel="stylesheet" href="../../Content/material-index.css" />
+  <link rel="stylesheet" href="../../Content/yqyOpenMenu.css">
+  <title>aux项目首页内容</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-row :gutter="20" style="margin: 0px auto;">
+      <el-col :span="4">
+        <div class="content" @contextmenu.prevent="handleContentBlankClick">
+          <div class="content-title">
+            <i class="el-icon-tickets icon-sign"></i><span class="content-txt">资料目录</span>
+          </div>
+          <div class="content-main">
+            <el-tree :data="treeContent" :default-expanded-keys="expandedkeys" node-key="id" @node-expand="handleExpand" @node-collapse="handleCollapse" highlight-curren @node-click="handleNodeClick"
+              :props="defalutProps" @node-contextmenu="handleNodeContextMenu"></el-tree>
+          </div>
+        </div>
+      </el-col>
+
+      <el-col :span="20" style="padding-right: 0px;">
+        <div class="materials">
+          <div class="materials-tabTit">
+            <div class="materials-tabTit-tabs">
+            <el-tabs v-model="sapcompanycode" @tab-click="handleTabsClick">
+              <el-tab-pane label="家用空调" name="1122"></el-tab-pane>
+              <el-tab-pane label="中央空调" name="1120"></el-tab-pane>
+              <el-tab-pane label="厨房电器" name="1195"></el-tab-pane>
+            </el-tabs>
+          </div>
+            <div class="add-material" v-if="if_create_flag">
+              <el-button size="mini" icon="el-icon-plus" @click="toNewAdd" style="height: 35px; color: #0088FF;line-height: 22px;border-radius: 8px;">新建资料</el-button>
+            </div>
+          </div>
+          <!-- 表格容器 -->
+          
+          <div class="tableWrap">
+            <el-table :data="tableData" height="86vh" >
+              <el-table-column type="index" label="序号" width="80" align="center" sortable>
+              </el-table-column>
+              <el-table-column prop="competebrandname" width="80" label="品牌"  align="center" sortable>
+                  
+              </el-table-column>
+              <el-table-column  label="标题" align="center" sortable>
+                  <template slot-scope="scope">
+                     <div @click="handleCellClick(scope.row)" style="color:#4088ff;cursor:pointer;">{{scope.row.name}}</div>
+                  </template>
+              </el-table-column>
+              <el-table-column label="版本" align="center"  width="80" sortable>
+                <template slot-scope="scope">
+                  <div>V{{scope.row.current_version}}</div>
+                </template>
+              </el-table-column>
+              <el-table-column prop="owner_name" label="作者" align="center" sortable>
+              </el-table-column>
+              <el-table-column prop="modifiedon" label="更新时间" align="center" sortable>
+              </el-table-column>
+              <el-table-column prop="validity_date" label="有效期" align="center" sortable>
+              </el-table-column>
+              <el-table-column label="操作" align="left" width="350">
+                <template slot-scope="scope">
+                  <el-button v-if="scope.row.If_edit_flag == 1" size="mini" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>
+                  <el-button v-if="scope.row.If_delete_flag == 1" size="mini" icon="el-icon-delete"
+                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+          <!-- 删除资料提示对话框 -->
+     <el-dialog title="删除提示" :visible.sync="deleMaterialVisible" width="30%">
+       <div class="tipContent">
+            <div class="deletErrorMark-icon">!</div>
+            <div class="deletErrorTxt">确定删除该记录</div>
+       </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="deleMaterialVisible = false">取 消</el-button>
+        <el-button type="primary" @click="cfmDeleMaterial">确 定</el-button>
+      </span>
+    </el-dialog>
+
+    <el-dialog title="重命名对话框" :visible.sync="reNameVisible" width="30%">
+      <el-input v-model="reName"></el-input>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="reNameVisible = false">取 消</el-button>
+        <el-button type="primary" @click="cfmRename">确 定</el-button>
+      </span>
+    </el-dialog>
+ 
+    <!-- 删除目录提示对话框 -->
+    <el-dialog title="删除提示" :visible.sync="deleErrorVisible" width="30%">
+       <div class="tipContent" v-if="deletError">
+            <div class="deletErrorMark-icon">X</div>
+            <div class="deletErrorTxt">请先移除该目录下的子目录以及资料</div>
+       </div>
+       <div class="tipContent" v-else>
+          <div class="deletWranMark-icon" style="background-color:#ff9200;">!</div>
+          <div class="deletErrorTxt">确认删除该目录</div>
+       </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="deleErrorVisible = false">取 消</el-button>
+        <el-button v-if="deletError" type="primary" @click="deleErrorVisible = false">确 定</el-button>
+        <el-button v-else type="primary" @click="cfmDeleDir">确 定</el-button>
+      </span>
+    </el-dialog>
+  </div>
+</body>
+<script src="../../Scripts/axios.min.js"></script>
+<script src="../../Scripts/jquery.js"></script>
+<script src="../../Scripts/moment.min.js"></script>
+<script src="../../Scripts/vue.js"></script>
+<script src="../../Scripts/element-ui-212.js"></script>
+<script src="../../Scripts/yqyOpenMenu.js"></script>
+<script src="../../Scripts/material-index.js"></script>
+</html>

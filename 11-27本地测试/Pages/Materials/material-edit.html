@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../Content/element-ui.css" />
+  <link rel="stylesheet" href="../../Content/reset.css">
+  <link rel="stylesheet" href="../../Content/new-add-material.css">
+  <title>编辑</title>
+     
+  <style>
+    .fileList-item-action_hasUpload {
+        margin: 0 15px;
+        width: 100px;
+        color: #000;
+    }
+
+    .el-message__content,.el-icon-success {
+        color:#fff !important;
+        font-size: 15px;
+    }
+
+    .uploadcss {
+        background-color: rgba(64, 158, 255, 0.78);
+    }
+
+    .deletWranMark-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        text-align: center;
+        line-height: 80px;
+        font-size: 50px;
+        background-color: #ff9200;
+        color: #fff;
+        margin: 10px auto;
+    }
+
+    .saveMark-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        text-align: center;
+        line-height: 80px;
+        font-size: 50px;
+        background-color: #0aef50;
+        color: #fff;
+        margin: 10px auto;
+    }
+
+
+    .deletErrorTxt {
+        font-size: 20px;
+        color: #000;
+        text-align: center;
+    }
+    .contentDialog{
+      width:30%;
+      height:500px;
+    }
+    .content-mainDialog{
+      height:300px;
+      overflow:auto;
+    }
+    .actionBtn{
+      background:#f2f2f2;
+      color:#0088ff;
+      font-size:12px;
+    }
+    .form-item-container-yqy{
+      padding:0 12px 12px  50px;
+    }
+</style>
+</head>
+<body>
+  <div id="materialEdit">
+    <el-row :gutter="20" style="margin-right:0px; margin-top: 10px;">
+      <el-col :span="18" style="padding-left: 20px;padding-right: 0px;">
+        <el-form :model="formData" :rules="rules" ref="formData" status-icon>
+          <div class="fmAction">
+            <el-button class="actionBtn"  size="mini" icon="el-icon-document" @click="cfmSaveMaterial('formData')">保存</el-button>
+            <!-- <el-button type="primary" size="mini" icon="el-icon-document">保存并升级</el-button> -->
+            <el-button class="actionBtn"  size="mini" icon="el-icon-delete" @click="deleMateriallVisible=true">删除</el-button>
+            <el-button class="actionBtn"  size="mini" icon="el-icon-close" @click="closeVisible=true">关闭</el-button>
+          </div>
+          <div class="form-item-container-yqy">
+          <el-form-item label="目录" prop="contentInDir">
+            <el-input placeholder="目录" v-model="formData.contentInDir" disabled class="inPcontent">
+              <i slot="suffix" class=" el-icon-folder-opened" v-on:click="popDirecList"></i>
+            </el-input>
+          </el-form-item>
+          <el-row>
+            <el-col :span="6">
+              <el-form-item label="产品线" prop="prdtLine">
+                <el-select v-model="formData.prdtLine" @change="handlePrdtLineChange">
+                  <el-option v-for="item in prdtLines" :key="item.id" :value="item.id"
+                    :label="item.name"></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="6">
+              <el-form-item label="品牌" prop="brand">
+                <el-select v-model="formData.brand" @change="handleBrandChange">
+                  <el-option v-for="item in brands" :key="item.brand_no" :value="item.brand_no"
+                    :label="item.brand_name"></el-option>
+                </el-select>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <el-form-item label="标题" prop="title">
+            <el-input v-model="formData.title"></el-input>
+          </el-form-item>
+          <el-form-item label="摘要" prop="summary">
+            <el-input type="textarea" :rows="5" v-model="formData.summary"></el-input>
+          </el-form-item>
+        </div>
+        </el-form>
+        <div id="material-upload-wrapper" style="padding-top: 15px;height:60px;padding-left:50px;overflow:auto;">
+          <div class="material-upload_top" style="margin-left: 12px;font-size: 14px;line-height: 6px;">资料</div>
+          <el-upload class="upload-container"
+             ref="upload" 
+            action="/ISV/kms/api/Material/UploadSingleMaterial"
+            :http-request = "upTosever"
+            :auto-upload="false"
+            :on-change = "handleFileChange"
+            :show-file-list="false">
+           <i class="el-icon-folder-opened  upload-txt"  style="color:#0088ff" slot="trigger">上传资料&lt;1G</i>
+           <!-- 查到的已上传的文件开始 -->
+           <ul class="fileList-container">
+              <li class="fileList-item" v-for="(attaItem,index) in attachedList" :key="attaItem.attachment_id">
+               <div class="fileList-item-info">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'doc'" class="fileList-item-info_pic"
+                  src="../../Content/images/doc.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'png'" class="fileList-item-info_pic"
+                  src="../../Content/images/doc.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'docx'" class="fileList-item-info_pic"
+                  src="../../Content/images/doc.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'ppt'" class="fileList-item-info_pic"
+                  src="../../Content/images/ppt.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'pptx'" class="fileList-item-info_pic"
+                  src="../../Content/images/ppt.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'xls'" class="fileList-item-info_pic"
+                  src="../../Content/images/xls.png">
+               <img v-if="attaItem.attachment_type.toLowerCase() == 'xlsx'" class="fileList-item-info_pic"
+                  src="../../Content/images/xls.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'txt'" class="fileList-item-info_pic"
+                  src="../../Content/images/txt.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'jpg'" class="fileList-item-info_pic"
+                  src="../../Content/images/jpg.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'pdf'" class="fileList-item-info_pic"
+                  src="../../Content/images/pdf.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'zip'" class="fileList-item-info_pic"
+                  src="../../Content/images/zip.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'rar'" class="fileList-item-info_pic"
+                  src="../../Content/images/zip.png">
+                <span style="vertical-align: middle;">{{attaItem.attachment_name}}</span>
+               </div>
+               <div class="fileList-item-action">
+                  <span class="fileList-item-action_hasUpload" v-if="attaItem.attachment_size>=1048576">{{(attaItem.attachment_size/1048576).toFixed(2)}}M</span>
+                   <span class="fileList-item-action_hasUpload" v-if="attaItem.attachment_size<1048576">{{(attaItem.attachment_size/1024).toFixed(2)}}KB</span>
+                  <span class="fileList-item-action_hasUpload">{{attaItem.attachment_uploader}}</span>
+                  <span class="fileList-item-action_hasUpload" style="width:200px;">{{attaItem.upload_on}}</span>
+                  <el-button class="smallBtn" type="primary" size ='mini' icon="el-icon-delete" @click="handleDeletMaterialAttached(attaItem)"></el-button>
+               </div>
+              </li>
+            </ul>
+           <!-- 查到的已上传的文件结束 -->
+           <ul class="fileList-container">
+             <li class="fileList-item" v-for="(fitem,index) in fileList">
+              <div class="fileList-item-info">
+                <img v-if="fitem.raw.type.indexOf('document',46)!== -1" class="fileList-item-info_pic" src="../../Content/images/doc.png">
+                <img v-if="fitem.raw.type.indexOf('presentationml',46)!== -1" class="fileList-item-info_pic" src="../../Content/images/ppt.png">
+                <img v-if="fitem.raw.type.indexOf('sheet',46)!== -1" class="fileList-item-info_pic" src="../../Content/images/xls.png">
+                 <img v-if="fitem.raw.type.indexOf('/pdf')!== -1" class="fileList-item-info_pic" src="../../Content/images/pdf.png">
+                <img v-if="fitem.raw.type.indexOf('text')!== -1" class="fileList-item-info_pic" src="../../Content/images/txt.png">
+                <img v-if="fitem.raw.type.indexOf('image')!== -1" class="fileList-item-info_pic" src="../../Content/images/jpg.png">
+                <img v-if="fitem.raw.type.indexOf('compressed')!== -1" class="fileList-item-info_pic" src="../../Content/images/zip.png">
+               <span>{{fitem.name}}</span>
+              </div>
+              <div class="fileList-item-action">
+                 <el-button class="smallBtn"  type="primary" size ='mini' icon="el-icon-upload2" @click="upTosever(index,fitem)"></el-button>
+                 <span class="action_up-status">待上传</span>
+                 <span class="action_up-size">{{(fitem.size/1024000).toFixed(2)}}M</span>
+                 <el-button class="smallBtn" type="primary" size ='mini' icon="el-icon-delete" @click="deletMaterialAttach(index)"></el-button>
+              </div>
+             </li>
+           </ul>
+          </el-upload>
+          
+        </div>
+      </el-col>
+      <el-col :span="6" style="padding-top:38px">
+      <div id="version">
+        <div class="v-set">版本设置</div>
+        <div class="cur-version">当前版本 <span class="formStar">*</span><span class="ver-number">V{{cur_version}}</span></div>
+        <div class="history">历史版本</div>
+      </div>
+      <div id="deadline">
+        <span class="dateLabel">有效期<i  class="formStar">*</i></span>
+        <span class="dateWrap"><el-date-picker type="date" placeholder="选择日期" disabled v-model="formData.deadline"></el-date-picker></span>
+      </div>
+      </el-col>
+    </el-row>
+
+
+  <!-- 显示目录对话框内容 -->
+  <el-dialog :visible.sync="contDialogVisible" width="30%" custom-class="contentDialog" destroy-on-close>
+    <div class="content">
+      <div class="content-title">
+        <i class="el-icon-tickets icon-sign"></i><span class="content-txt">资料目录</span>
+      </div>
+      <div class="content-main content-mainDialog">
+        <el-tree :data="treeContent" node-key="id" highlight-curren :props="defalutProps"  @node-click="handleNodeClick"></el-tree>
+      </div>
+    </div>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="contDialogVisible = false">取 消</el-button>
+      <el-button type="primary" @click="contDialogVisible = false">确 定</el-button>
+    </div>
+  </el-dialog>
+
+     
+  <!-- 删除资料确认对话框 -->
+  <el-dialog title="删除提示" :visible.sync="deleMateriallVisible" width="30%">
+      <div class="tipContent">
+         <div class="deletWranMark-icon">!</div>
+         <div class="deletErrorTxt">确认删除该资料</div>
+      </div>
+     <span slot="footer" class="dialog-footer">
+       <el-button @click="deleMateriallVisible = false">取 消</el-button>
+       <el-button  type="primary" @click="handDelClick">确 定</el-button>
+     </span>
+   </el-dialog>
+
+  <!-- 删除附件确认对话框 -->
+  <el-dialog title="删除提示" :visible.sync="deleAttachVisible" width="30%">
+      <div class="tipContent">
+         <div class="clsoeWranMark-icon">!</div>
+         <div class="deletErrorTxt">确认删除该附件</div>
+      </div>
+     <span slot="footer" class="dialog-footer">
+       <el-button @click="deleAttachVisible = false">取 消</el-button>
+       <el-button  type="primary" @click="cfmDeleAttach">确 定</el-button>
+     </span>
+   </el-dialog>
+     
+         <el-dialog title="关闭提示" :visible.sync="closeVisible" width="30%">
+     <div class="tipContent">
+        <div class="clsoeWranMark-icon">!</div>
+        <div class="deletErrorTxt">资料不会自动保存，确认关闭！</div>
+     </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="closeVisible = false">取 消</el-button>
+      <el-button  type="primary" @click="cfmCloseDir">确 定</el-button>
+    </span>
+   </el-dialog>
+
+    <el-dialog title="提示" :visible.sync="saveVisible" width="30%">
+     <div class="tipContent">
+        <div class="saveMark-icon">√</div>
+        <div class="deletErrorTxt">保存成功</div>
+     </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button  type="primary" @click="saveVisible = false">确 定</el-button>
+    </span>
+  </el-dialog>
+
+</div>
+</body>
+<script src="../../Scripts/axios.min.js"></script>
+<script src="../../Scripts/jquery.js"></script>
+<script src="../../Scripts/vue.js"></script>
+<script src="../../Scripts/element-ui.js"></script>
+<script src="../../Scripts/material-edit.js"></script>
+
+</html>

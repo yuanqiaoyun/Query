@@ -1,0 +1,136 @@
+body{
+  background:#f2f2f2;
+}
+.viewContainer>.el-row{
+   margin-right:0!important;
+}
+.viewContainer .el-col.el-col-6{
+  padding-right:0!important;
+}
+.close{
+  margin:10px;
+}
+.detailContain, .historyContain {
+    height: 94vh;
+    background-color: #fff;
+    border: 1px solid #ccc
+}
+.detailContent{
+  padding:15px 20px;
+  display:flex;
+  justify-content: space-between;
+  height:30px;
+  align-items: center;
+  font-size:12px;
+}
+.txt{
+  color:#ccc;
+}
+.detai_brand{
+  display:flex;
+  padding:0 20px;
+margin-top: 15px;
+}
+.detai_brand-txt{
+   width:96px;
+   height:34px;
+   color:#fff;
+   background-color: #0088ff;
+   text-align:center;
+   line-height: 34px;
+   margin-right: 20px;
+   border-radius: 4px;
+   font-size:12px;
+}
+.detail_title-txt{
+  height:54px;
+  font-size:18px;
+  line-height: 54px;
+  color:#000;
+  text-align:center;
+  margin:50px  0;
+}
+.detail_abstr{
+  padding:0 20px;
+}
+.detail_abstr-des{
+  width:90%;
+  font-size:12px;
+  line-height: 20px;
+  margin:0 auto;
+}
+
+.fileList-container{
+  width:90%;
+  margin:0 auto;
+  margin-top:60px;
+}
+.fileList-item{
+  display:flex;
+  padding:0 20px 0 14px;
+  align-items: center;
+  margin-top:15px;
+}
+.fileList-container .el-checkbox__label{
+  display:flex;
+  width:100%;
+}
+.fileList-item-info{
+    width:500px;
+    color:#000;
+}
+.fileList-item-info_pic{
+  width:30px;
+  height:30px;
+  vertical-align: middle;
+}
+.fileList-item-action{
+  display:flex;
+  align-items: center;
+  text-align:right;
+}
+.action_up-status{
+  margin:0 15px;
+  width: 100px;
+  color:#000;
+}
+.action_up-size{
+    font-size: 13px;
+    color: #000;
+    margin-right: 13px;
+    width:100px;
+}
+.smallBtn{
+  padding:3px 7px;
+}
+.preview{
+    font-size: 17px;
+    color: #0088ff;
+    font-weight: bolder;
+}
+.dowAll-wrapper {
+    margin-top: 30px;
+    padding-left: 84px;
+}
+.dowAll {
+    font-size: 15px;
+    color: #0088ff;
+}
+.cur-version{
+  display:inline-block;
+  width:56px;
+  height:24px;
+  color:#fff;
+  background-color: #0088ff;
+  text-align:center;
+  line-height: 24px;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+.history_txt{
+  height:30px;
+  line-height:30px;
+  padding-left:30px;
+  padding-top:20px;
+  font-size:12px;
+}

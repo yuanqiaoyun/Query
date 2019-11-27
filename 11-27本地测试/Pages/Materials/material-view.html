@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../Content/element-ui-212.css" />
+  <link rel="stylesheet" href="../../Content/reset.css" />
+  <link rel="stylesheet" href="../../Content/material-view.css" />
+  <title>资料查看</title>
+</head>
+
+<body>
+  <div id="material_view">
+    <div class="close">
+        <el-button v-if="if_edit_flag"  size="mini" icon="el-icon-edit" @click="toEdit">编辑</el-button>
+        <el-button  size="mini" icon="el-icon-close" @click="toColse">关闭</el-button>
+    </div>
+    <div class="viewContainer" style="margin:0 10px">
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <div class="detailContain">
+            <div class="detailContent">
+              <div class="contentIn"><img src="../../Content/images/URL.png" style="width:33px;height:16px;vertical-align: middle;">{{materialDetail.material_directory_name}}</div>
+            </div>
+            <div class="detai_brand">
+              <span class="detai_brand-txt">{{materialDetail.productgroupname}}</span>
+              <span class="detai_brand-txt">{{materialDetail.competebrandname}}</span>
+            </div>
+            <div class="detail_title">
+              <div class="detail_title-txt">{{materialDetail.name}}</div>
+            </div>
+            <div class="detail_abstr">
+             <p class="detail_abstr-des"> 摘要：{{materialDetail.material_abstract}}</p>
+            </div>
+            <el-checkbox-group v-model="checkedMaterials" class="fileList-container"
+              @change="handleCheckedMaterialsChange">
+              <el-checkbox v-for="attaItem in attachList" :key="attaItem.attachment_id" :label="attaItem" class="fileList-item" >
+                <span class="fileList-item-info">
+                   <img v-if="attaItem.attachment_type.toLowerCase() == 'doc'" class="fileList-item-info_pic"
+                    src="../../Content/images/doc.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'docx'" class="fileList-item-info_pic"
+                    src="../../Content/images/doc.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'ppt'" class="fileList-item-info_pic"
+                    src="../../Content/images/ppt.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'pptx'" class="fileList-item-info_pic"
+                    src="../../Content/images/ppt.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'xls'" class="fileList-item-info_pic"
+                    src="../../Content/images/xls.png">
+                 <img v-if="attaItem.attachment_type.toLowerCase() == 'xlsx'" class="fileList-item-info_pic"
+                    src="../../Content/images/xls.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'txt'" class="fileList-item-info_pic"
+                    src="../../Content/images/txt.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'jpg'" class="fileList-item-info_pic"
+                    src="../../Content/images/jpg.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'png'" class="fileList-item-info_pic"
+                    src="../../Content/images/jpg.png">
+                   <img v-if="attaItem.attachment_type.toLowerCase() == 'jpeg'" class="fileList-item-info_pic"
+                    src="../../Content/images/jpg.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'pdf'" class="fileList-item-info_pic"
+                    src="../../Content/images/pdf.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'zip'" class="fileList-item-info_pic"
+                    src="../../Content/images/zip.png">
+                  <img v-if="attaItem.attachment_type.toLowerCase() == 'rar'" class="fileList-item-info_pic"
+                    src="../../Content/images/zip.png">
+                  <span style="font-size:12px;">{{attaItem.attachment_name}}</span>
+                </span>
+                <span class="fileList-item-action">
+                   <span class="action_up-status" v-if="attaItem.attachment_size>=1048576">{{(attaItem.attachment_size/1048576).toFixed(2)}}M</span>
+                  <span class="action_up-status" v-if="attaItem.attachment_size<1048576">{{(attaItem.attachment_size/1024).toFixed(2)}}KB</span>
+                  <span class="action_up-status">{{attaItem.attachment_uploader}}</span>
+                  <span class="action_up-status" style="width:200px;">{{attaItem.upload_on}}</span>
+                  <a :href="attaItem.attachment_url" v-if="attaItem.attachment_type=='pfd'||attaItem.attachment_type=='txt'||attaItem.attachment_type=='jpg'||attaItem.attachment_type=='png'||attaItem.attachment_type=='jpeg'" class="el-icon-reading preview"></a>
+                  <span  v-else class="el-icon-reading preview" style="color: gainsboro;"></span>
+                  <span v-if="if_download" class="el-icon-download preview" style="margin-left:10px;" @click="downloadSingle(attaItem.attachment_url,attaItem.attachment_name)"></span>
+                  <span v-else class="el-icon-download preview" style="margin-left:5px; color:#ccc" @click="return false;"></span>
+                </span>
+              </el-checkbox>
+            </el-checkbox-group>
+            <div class="dowAll-wrapper" v-if=if_download >
+                <el-checkbox v-model='allSelectMark' @change="handlerSelectedChk"></el-checkbox><span class="el-icon-download dowAll" v-on:click="downAll">批量下载</span>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="6" style="padding-left:0px">
+          <div class="historyContain">
+              <div class="history_txt">
+                <span class="cur-version">V{{materialDetail.current_version}}</span>
+                <span>有效期：{{materialDetail.validity_date}}</span>
+            </div>
+            <div class="history_txt">
+                <span>作者：{{materialDetail.owner_name}}</span>
+                <span>更新时间：{{materialDetail.modifiedon}}</span>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
+  </div>
+</body>
+<script src="../../Scripts/axios.min.js"></script>
+<script src="../../Scripts/jquery.js"></script>
+<script src="../../Scripts/vue.js"></script>
+<script src="../../Scripts/element-ui-212.js"></script>
+<script src="../../Scripts/material-view.js"></script>
+
+</html>

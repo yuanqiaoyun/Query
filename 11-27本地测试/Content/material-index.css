@@ -1,0 +1,137 @@
+body{
+  background-color: #f2f2f2;
+  font-family: "MicrosoftYahei";
+}
+.el-tree-node__label {
+    font-size: 15px;
+}
+.el-tree-node__content {
+    height: 30px;
+}
+#app > .el-row {
+    height: calc(100% - 50px);
+    margin-right: 0 !important;
+}
+#app .el-col.el-col-4{
+  padding:0 !important;
+}
+.content {
+    height: 99vh;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    overflow: auto;
+}
+.content-title{
+  height:54px;
+  border-bottom:1px solid #ccc;
+  line-height:54px;
+  margin-left:5px;
+}
+.content-main .el-tree-node__label{
+  font-size:12px;
+}
+.icon-sign,.content-txt{
+  font-size:16px;
+  color:#0088ff;
+  font-weight:bolder;
+}
+.materials {
+    height: 99vh;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.materials-tabTit{
+   height:54px;
+   line-height:54px;
+   padding:0 5px;
+}
+.materials-tabTit-tabs{
+  float:left;
+}
+.materials-tabTit-tabs .el-tabs__item{
+  color:#000;
+  font-size:16px;
+  font-weight:bolder;
+}
+.add-material {
+    float: right;
+    margin-right: 60px;
+    margin-top: 14px;
+}
+.tableWrap .el-table thead{
+  font-size:12px;
+  font-weight:bolder;
+}
+.el-table th>.cell{
+  color:#666;
+}
+
+.el-tabs__item.is-active{
+  font-weight:bold;
+}
+
+.el-table__body tr:hover > td {
+    background-color: rgba(0,136,255,0.1) !important;
+    color: #0088ff;
+    cursor: default !important;
+}
+
+.el-table__body tr.current-row>td{
+  background-color:rgba(0,136,255,0.1)!important;
+  color:#0088ff;
+}
+
+/* //设置背景色 */
+.el-tree-node__content:hover{
+  background-color: rgba(0,136,255,0.1);
+  color:#0088ff;
+}
+.el-tree-node:focus>.el-tree-node__content{
+  color:#0088ff;
+  font-weight:bolder !important;
+}
+.el-popover{
+  padding:0px 0px;
+  margin-top:40px;
+  margin-left:50px;
+}
+.action-item{
+  height:40px;
+  line-height:40px;
+  border-bottom:1px solid #ccc;
+  text-align:center;
+  cursor:pointer;
+}
+.action-item:last-child{
+  border-bottom:none;
+}
+.action-item:hover{
+  background-color: #f2f2f2;
+}
+.deletErrorMark-icon{
+  width:80px;
+  height:80px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size:50px;
+  background-color: #f00;
+  color:#fff;
+  margin:10px auto;
+}
+.deletWranMark-icon{
+  width:80px;
+  height:80px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size:50px;
+  background-color: yellow;
+  color:#fff;
+  margin:10px auto;
+}
+.deletErrorTxt{
+  font-size:20px;
+  color:#000;
+  text-align:center;
+}
