@@ -11,6 +11,7 @@ var vueData = {
     userRole: true, //用户角色:根据角色来判断该用户是否可以调用右击快捷键 false or true
     userId: "2FC6451A-6A73-E811-80C7-8BF578CAAADF", //userId 用户角色 2FC6451A-6A73-E811-80C7-8BF578CAAADF
     if_create_flag: false,
+    disBtn:true,
     // tableData:[{
     //   upDate: '2016-05-02',
     //   brandName: '奥克斯',

@@ -66,6 +66,11 @@ var vueData = {
     cur_attachmentId: '', //当前附件的ID
     deleMateriallVisible: false,//删除资料对话框的显示
     saveVisible:false,
+
+
+    // 权限角色变量
+    viewAuthority:'',
+    authorityVisible:false,
 };
 var materialEdit = new Vue({
     el: '#materialEdit',
@@ -360,6 +365,14 @@ var materialEdit = new Vue({
             vueData.closeVisible = false;
             window.close();
         },
+
+
+        // 角色群权限设置
+        handleAuthorityChange(value){
+          console.log(value);
+          vueData.viewAuthority = value;
+          vueData.authorityVisible = true;
+        }
         
     }
 })

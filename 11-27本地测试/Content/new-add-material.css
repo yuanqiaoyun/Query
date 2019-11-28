@@ -181,3 +181,62 @@ body{
   height:300px;
   overflow:auto;
 }
+
+
+
+/* 权限选择的样式 */
+.authority-container{
+  height:180px;
+  border:1px solid #ccc;
+  background:#fff;
+  padding-bottom: 20px;
+}
+.authority-set{
+  font-size:14px;
+  padding:30px 0 0 30px;
+  color:#000;
+  font-weight:bold;
+}
+.authority-item{
+  display:flex;
+  align-items: center;
+  margin:15px 0  0 40px;
+  color:#000;
+}
+
+.authority-item_label{
+  font-size:12px;
+  font-weight:bold;
+}
+.authority-item_RadioWrap{
+  margin-left:5px;
+}
+.authority-item_RadioWrap .el-radio-button__inner{
+  background:#f2f2f2;
+}
+.authority-item_RadioWrap .el-radio-button__inner:hover{
+  background:rgba(185, 214, 240, 0.5);
+  color:#0088ff;
+}
+.authority-item_RadioWrap .el-radio-button:first-child .el-radio-button__inner{
+  border-left:none;
+}
+.authority-item_RadioWrap .el-radio-button__inner{
+  border:1px solid #fff;
+}
+
+/* title前边的蓝杠 */
+.el-dialog__title{
+  position:relative;
+  font-size:12px;
+}
+.el-dialog__title::before{
+  display:inline-block;
+  content:"";
+  width:4px;
+  height:18px;
+  background:#0088ff;
+  position:absolute;
+  top:0px;
+  left:-8px;
+}
