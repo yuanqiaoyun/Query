@@ -43,8 +43,8 @@ var vueData = {
             { required: true, message: '请选择品牌', trigger: 'blur' }
         ],
         title: [
-            { required: true, message: '资料标题必填，且长度不能超过50个字', trigger: 'blur', },
-            { max: 50, message: '最多不能超过50个字', trigger: 'change', limit: true }
+            { required: true, message: '资料标题必填，且长度不能超过50个字',  },
+            { max: 50, message: '最多不能超过50个字',trigger: 'change'}
         ],
         summary: [
             { required: true, message: '摘要必填，且长度不能超过120个字', trigger: 'blur' },
@@ -133,6 +133,16 @@ var newAdd = new Vue({
         },
         handleBrandChange(value) {
             vueData.formData.brand_no = value;
+        },
+        handleTitleChange(value){
+            console.log(value);
+            if(value.length>=50){
+                vueData.formData.title = '123';
+            }else{
+                vueData.formData.title = value;
+            }
+            
+            
         },
         //6.弹出目录节点点击
         handleNodeClick(data, node, component) {
@@ -255,6 +265,6 @@ var newAdd = new Vue({
             window.sessionStorage.setItem('If_download_flag', '1');
             // file:///D:/%E6%96%87%E6%A1%A3/AUX--All/11-26%20%E7%BB%88%E7%89%88/Pages/Materials/material-edit.html  本地编辑页面地址
             window.location.href = "file:///D:/%E6%96%87%E6%A1%A3/AUX--All/11-26%20%E7%BB%88%E7%89%88/Pages/Materials/material-edit.html";
-        }
+        },
     }
 })

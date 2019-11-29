@@ -110,10 +110,10 @@
             </el-col>
           </el-row>
           <el-form-item label="标题" prop="title">
-            <el-input v-model="formData.title"></el-input>
+            <el-input v-model="formData.title" maxLength=50></el-input>
           </el-form-item>
           <el-form-item label="摘要" prop="summary">
-            <el-input type="textarea" :rows="5" v-model="formData.summary"></el-input>
+            <el-input type="textarea" :rows="5" v-model="formData.summary" maxLength=150></el-input>
           </el-form-item>
         </div>
         </el-form>
@@ -194,7 +194,7 @@
       <el-col :span="6" style="padding-top:38px">
       <div id="version">
         <div class="v-set">版本设置</div>
-        <div class="cur-version">当前版本 <span class="formStar">*</span><span class="ver-number">V{{cur_version}}</span></div>
+        <div class="cur-version">当前版本 <span class="formStar">*</span><span class="ver-number">v{{cur_version}}</span></div>
         <div class="history">历史版本</div>
       </div>
       <!-- 指定角色权限开始 -->
@@ -203,11 +203,11 @@
         <div class="authority-item">
           <div class="authority-item_label">查看:</div>
           <div class="authority-item_RadioWrap">
-            <el-radio-group size="mini" v-model="viewAuthority" @change="handleAuthorityChange">
-              <el-radio-button label="所有人"></el-radio-button>
-              <el-radio-button label="指定角色"></el-radio-button>
-              <el-radio-button label="指定人"></el-radio-button>
-              <el-radio-button label="仅作者"></el-radio-button>
+            <el-radio-group size="mini" v-model="viewAuthority" v-on:click="handleAuthorityChange">
+              <el-radio-button label="1">所有人</el-radio-button>
+              <el-radio-button label="2">指定角色</el-radio-button>
+              <el-radio-button label="3">指定人</el-radio-button>
+              <el-radio-button label="4">仅作者</el-radio-button>
             </el-radio-group>
           </div>
         </div>
@@ -226,10 +226,10 @@
           <div class="authority-item_label">编辑:</div>
           <div class="authority-item_RadioWrap">
               <el-radio-group size="mini">
-                <el-radio-button label="所有人"></el-radio-button>
-                <el-radio-button label="指定角色"></el-radio-button>
-                <el-radio-button label="指定人"></el-radio-button>
-                <el-radio-button label="仅作者"></el-radio-button>
+                <el-radio-button value="1">所有人</el-radio-button>
+                <el-radio-button value="2">指定角色</el-radio-button>
+                <el-radio-button value="3">指定人</el-radio-button>
+                <el-radio-button value="4">仅作者</el-radio-button>
               </el-radio-group>
             </div>
       </div>
@@ -306,19 +306,54 @@
 
 
   <!-- 仅作者和所有人对话框 -->
-  <el-dialog title="权限提醒" :visible.sync="authorityVisible" :show-close=false>
-      <div class="tipContent">
-         <div class="saveMark-icon">√</div>
-         <div class="deletErrorTxt">确认修改权限</div>
+  <el-dialog  :visible.sync="authorityVisible" :show-close=false :close-on-click-modal='false' custom-class="authority-dialog">
+      <div slot="title" class="authority-header"><span class="titleMark"></span>权限提醒</div>
+      <div class="authority-main">
+              <img src="../../Content/images/warn.png">
+              <p>确认修改权限</p>
       </div>
-     <span slot="footer" class="dialog-footer">
+      <span slot="footer" class="dialog-footer" >
        <el-button  type="primary" @click="authorityVisible = false">确 定</el-button>
-       <el-button  type="primary" @click="authorityVisible = false">取消</el-button>
+       <el-button    @click="authorityVisible = false">取消</el-button>
      </span>
    </el-dialog>
+    <!-- 仅作者和所有人对话框 -->
+      
+    <!-- 指定角色对话框开始 -->
+    <el-dialog  :visible="authorityVisible2" :show-close=false :close-on-click-modal='false' custom-class="authority-dialog-roleUser">
+        <div slot="title" class="authority-header"><span class="el-icon-user" style="font-size:15px;color:#0088ff;margin-right:5px;"></span>角色</div>
+        <div class="search-inp">
+          <el-input placeholder="请输入内容">
+          <i slot="suffix" class="el-input__icon el-icon-search" style="color:#0088ff;"></i>
+        </el-input>
+        </div>
+        <div class="list-wraper">
+          <el-checkbox-group v-model="checkedroleList" class="checkboxWrapper" @change="handleRoleChangeList">
+                <el-checkbox class="list_item" v-for="item in userRoleList" :label="item" :key="item.roleid">{{item.name}}</el-checkbox>
+          </el-checkbox-group>
+        </div>
+        <span slot="footer" class="dialog-footer" >
+            <el-checkbox class="checkAll" v-model="checkAll" @change="handleCheckAll">全选</el-checkbox>
+         <el-button type="primary" @click="authorityVisible2 = false">确 定</el-button>
+         <el-button    @click="handleCancelRolechange">取消</el-button>
+         
+       </span>
+     </el-dialog>
+<!-- 指定角色和指定人对话框开始 -->
 
-
-
+<!-- 指定人对话框开始 -->
+<!-- <el-dialog  :visible.sync="authorityVisible3" :show-close=false :close-on-click-modal='false' custom-class="authority-dialog">
+    <div slot="title" class="authority-header"><span class="titleMark"></span>权限提醒</div>
+    <div class="authority-main">
+            <img src="../../Content/images/warn.png">
+            <p>确认修改权限</p>
+    </div>
+    <span slot="footer" class="dialog-footer" >
+     <el-button size=medium type="primary" @click="authorityVisible = false">确 定</el-button>
+     <el-button size=medium   @click="authorityVisible = false">取消</el-button>
+   </span>
+ </el-dialog> -->
+<!-- 指定角色和指定人对话框开始 -->
 
 </div>
 </body>

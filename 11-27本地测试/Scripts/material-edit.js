@@ -69,8 +69,14 @@ var vueData = {
 
 
     // 权限角色变量
-    viewAuthority:'',
+    viewAuthority:'',//允许的角色
     authorityVisible:false,
+    authorityVisible2:false, //指定角色对话框
+    userRoleList:[],
+    checkedroleList:[], //选择的用户角色
+    userList:[],
+    checkAll:false, //用户角色是否全选
+    authorityVisible3:false,
 };
 var materialEdit = new Vue({
     el: '#materialEdit',
@@ -83,13 +89,33 @@ var materialEdit = new Vue({
         this.getSessionVariable();
         //获取目录
         this.getContentList();
-       
+
+        //获取用户角色列表
+        this.getRoleList();
         
 
     },
     methods: {
         popDirecList() {
             vueData.contDialogVisible = true;
+        },
+        //获取
+        getRoleList(){
+         $.ajax({
+             url:'http://10.151.66.61:8099/api/Crm/GetRoleList?id=a1e0c031-bb11-ea11-80c9-dd15762e6a74',
+             type:'get',
+             success:function(res){
+               if(res.responseStatus == 'S'){
+                    vueData.userRoleList = res.responseData;
+               }else{
+                   alert(res.responseMsg);
+               }
+             },
+             error:function(err){
+                 alert("接口调用失败",err);
+             }
+
+         })
         },
         //从session中去取值
         getSessionVariable() {
@@ -365,13 +391,38 @@ var materialEdit = new Vue({
             vueData.closeVisible = false;
             window.close();
         },
-
-
         // 角色群权限设置
         handleAuthorityChange(value){
-          console.log(value);
-          vueData.viewAuthority = value;
-          vueData.authorityVisible = true;
+            //  vueData.authorityVisible2 = !vueData.authorityVisible2;
+            console.log(value);
+          if(value==1||value==4){
+            vueData.authorityVisible = true;
+          }
+          if(value == 2){
+              vueData.authorityVisible2 = !vueData.authorityVisible2;
+          }
+          
+        },
+        handleCancelRolechange(){
+            vueData.authorityVisible2 = false;
+            vueData.viewAuthority ="";
+        },
+        //监听选择指定角色变化
+        handleRoleChangeList(){
+           if(vueData.checkedroleList.length>=vueData.userRoleList.length){
+               vueData.checkAll = true;
+           }else{
+            vueData.checkAll = false;
+           }
+        },
+        //监听全选点击变化
+        handleCheckAll(value){
+            if(value){
+                vueData.checkedroleList = vueData.userRoleList;
+            }else{
+                vueData.checkedroleList = [];
+            }
+              
         }
         
     }

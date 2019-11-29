@@ -3,3 +3,29 @@
 在test01的分支上加的内容
 
 //这行代码是在aux1分支下加上的
+
+//后端给的用户角色的数据
+ [
+{name: "中心-财务", roleid: "91f1336a-2612-e911-80c6-ed6b9706ec83", if_select_flag: 0},
+{name: "客服-班长", roleid: "48800a11-1675-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "CEO 业务经理", roleid: "14b3451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0},
+{name: "村淘开单-杭州中心", roleid: "845bb4e0-ac4f-e911-80c3-d28c2016458e", if_select_flag: 0},
+{name: "总部-安装卡数据导出", roleid: "65747464-eb5c-e911-80c8-e19bf7584c50", if_select_flag: 0},
+{name: "监理主管", roleid: "2fc41c35-fccd-e811-80c5-c599a7045901", if_select_flag: 0},
+{name: "资料内容创建权限", roleid: "8712e90f-3f0c-ea11-80c9-dd15762e6a74", if_select_flag: 0},
+{name: "知识管理器", roleid: "bfba451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0},
+{name: "外部电商-录单", roleid: "56d98bf0-e884-e811-80cb-f0709a5f128c", if_select_flag: 0},
+{name: "中心-网络", roleid: "1d78f83f-2e75-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "中心-结算", roleid: "c702e612-3075-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "集团-审计岗位", roleid: "e65c2d83-e017-e911-80c6-efa8542c74c4", if_select_flag: 0},
+{name: "中心-信息", roleid: "2fab8da5-2b75-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "销售员", roleid: "ccb8451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0},
+{name: "市场营销副总裁", roleid: "92a6451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0},
+{name: "中心-商技术主管", roleid: "1b700131-44e6-e811-80c5-c599a7045901", if_select_flag: 0},
+{name: "中心-技术", roleid: "b7143f26-3775-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "Support User", roleid: "abb5451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0},
+{name: "结算-结算管理", roleid: "8f8fbe01-6b75-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "服务仓库修改", roleid: "2a5a518b-c404-e911-80c3-d28c2016458e", if_select_flag: 0},
+{name: "客服-科长", roleid: "31a3c48c-f574-e811-80c7-822b5c0c59bf", if_select_flag: 0},
+{name: "代理", roleid: "acac451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0}
+ ]

@@ -46,40 +46,15 @@
             </el-col>
           </el-row>
           <el-form-item label="标题" prop="title">
-            <el-input v-model="formData.title"></el-input>
+            <el-input v-model="formData.title" @change="handleTitleChange" maxlength=50></el-input>
           </el-form-item>
           <el-form-item label="摘要" prop="summary">
-            <el-input type="textarea" :rows="5" v-model="formData.summary"></el-input>
+            <el-input type="textarea" :rows="5" v-model="formData.summary" maxlength=150></el-input>
           </el-form-item>
         </div>
         </el-form>
         <div id="material-upload-wrapper" style="padding-top: 15px;height: 43vh;">
-          <div class="material-upload_top" style="margin-left: 12px;font-size: 14px;line-height: 6px;">资料 <i class="el-icon-folder-opened  upload-txt" style="padding-left:5px" slot="trigger">上传资料&lt;1G</i></div>
-              
-         <!-- <el-upload class="upload-container"
-             ref="upload" 
-            action="/ISV/kms/api/Material/UploadSingleMaterial"
-            :http-request = "upTosever"
-            :auto-upload="false"
-            :on-change = "handleFileChange"
-            :show-file-list="false">
-           <i class="el-icon-folder-opened  upload-txt" slot="trigger">上传资料&lt;1G</i>
-           <ul class="fileList-container">
-             <li class="fileList-item" v-for="(fitem,index) in fileList">
-              <div class="fileList-item-info">
-                <img style="width:30px;height:40px;vertical-align: middle;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574593013979&di=eef6d7fac2163e293ff459bc6d4402f1&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F16%2F11%2F17%2Fa4e599cd568b9cf45af695884f61a3bc.jpg">
-               <span>{{fitem.name}}</span>
-              </div>
-              <div class="fileList-item-action">
-                 <el-button class="smallBtn" :disabled="saveStatus" type="primary" size ='mini' icon="el-icon-upload2" @click="upTosever(fitem)"></el-button>
-                 <span class="action_up-status">待上传</span>
-                 <span class="action_up-size">{{(fitem.size/1024).toFixed(2)}}M</span>
-                 <el-button class="smallBtn" type="primary" size ='mini' icon="el-icon-delete" @click="deletMaterialAttach(index)"></el-button>
-              </div>
-             </li>
-           </ul>
-          </el-upload> -->
-          
+          <div class="material-upload_top" style="margin-left: 12px;font-size: 14px;line-height: 6px;">资料 <i class="el-icon-folder-opened  upload-txt" style="padding-left:5px" slot="trigger">上传资料&lt;1G</i></div> 
         </div>
       </el-col>
       <el-col :span="6" style="padding-top:38px">
