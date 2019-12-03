@@ -1,0 +1,283 @@
+.fileList-item-action_hasUpload {
+  margin: 0 15px;
+  width: 100px;
+  color: #000;
+}
+.el-message__content,.el-icon-success {
+  color:#fff !important;
+  font-size: 15px;
+}
+.uploadcss {
+  background-color: rgba(64, 158, 255, 0.78);
+}
+.deletWranMark-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 50px;
+  background-color: #ff9200;
+  color: #fff;
+  margin: 10px auto;
+}
+.saveMark-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 50px;
+  background-color: #0aef50;
+  color: #fff;
+  margin: 10px auto;
+}
+.deletErrorTxt {
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}
+.contentDialog{
+width:30%;
+height:500px;
+}
+.content-mainDialog{
+height:300px;
+overflow:auto;
+}
+.actionBtn{
+background:#f2f2f2;
+color:#0088ff;
+font-size:12px;
+}
+.form-item-container-yqy{
+padding:0 12px 12px  50px;
+}
+
+/* 历史版本模块 */
+.historyContain{
+  height: 100px;
+  margin-top: 20px;
+  overflow:auto;
+}
+.history_item{
+  font-size:12px;
+  display:flex;
+  align-items: center;
+  padding-right:10px;
+  justify-content: space-between;
+  height:32px;
+}
+.history_item:hover{
+  color:#0088ff;
+  cursor:pointer;
+}
+.history_item-ver{
+  width:10%;
+  height:20px;
+  background-color: rgba(153, 153, 153, 1);
+  color:#fff;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 2px;
+}
+.history_item-name{
+  width:40%;
+  margin-left:2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.history_item-author{
+  width:10%;
+  text-align:center;
+  margin:0 5%;
+}
+.history_item-time{
+  width:30%;
+  text-align:right;
+}
+/* 历史版本结束 */
+
+
+/* 权限选择的样式 */
+.authority-container{
+  height:180px;
+  border:1px solid #ccc;
+  background:#fff;
+  padding-bottom: 20px;
+}
+.authority-set{
+  font-size:14px;
+  padding:30px 0 0 30px;
+  color:#000;
+  font-weight:bold;
+}
+.authority-item{
+  display:flex;
+  align-items: center;
+  margin:15px 0  0 40px;
+  color:#000;
+}
+
+.authority-item_label{
+  font-size:12px;
+  font-weight:bold;
+}
+.authority-item_RadioWrap{
+  margin-left:5px;
+}
+.authority-item_RadioWrap .el-radio-button__inner{
+  background:#f2f2f2;
+}
+.authority-item_RadioWrap .el-radio-button__inner:hover{
+  background:rgba(185, 214, 240, 0.5);
+  color:#0088ff;
+}
+.authority-item_RadioWrap .el-radio-button:first-child .el-radio-button__inner{
+  border-left:none;
+}
+.authority-item_RadioWrap .el-radio-button__inner{
+  border:1px solid #fff;
+}
+/* 权限选择 */
+
+/* 权限设置对话框样式 */
+.authority-dialog{
+  width:400px;
+}
+.authority-header{
+  display:flex;
+  align-items: center;
+  font-size:12px;
+}
+.titleMark{
+  display:inline-block;
+  width:4px;
+  height:18px;
+  background:#0088ff;
+  margin-right:5px;
+}
+.authority-dialog img{
+  width:48px;
+  height:48px;
+}
+.el-dialog__footer {
+  text-align: center;
+}
+.authority-dialog .el-button--medium{
+    padding:10px 40px;
+}
+.authority-main-allAndOnly{
+  text-align: center;
+}
+.search-inp{
+  width:60%;
+}
+.list-wraper{
+     height: 170px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    border-right: none;
+    margin-top: 5px;
+}
+.authority-dialog .checkboxWrapper{
+  width:auto;
+  height:150px;
+  padding: 20px 0 0 30px;
+}
+.el-dialog__body{
+  padding-bottom:0px;
+}
+.list_item{
+  display: block;
+  margin-bottom: 11px;
+}
+.el-dialog__footer .view-dialog-role{
+   text-align:right;
+   padding-bottom: 0px;
+}
+ .el-dialog__footer .checkAll{
+  margin-right: 83px;
+}
+.el-checkbox__label{
+  font-size:12px;
+}
+
+/* 提醒设置样式开始 */
+.clockContainer{
+   background:#fff;
+   margin-top:20px;
+   border:1px solid #ccc;
+   padding:30px 0 20px 20px;
+}
+.clock-tit{
+  font-size:12px;
+  color:#000;
+  font-weight:bold;
+}
+.clock-main{
+  font-size:12px;
+}
+.clock-main-row{
+  display:flex;
+  margin-top:20px;
+}
+.clock-main_col{
+  display:flex;
+  align-items: center;
+}
+.clock-main_itemLabel{
+  display:inline-block;
+}
+.clock-main_itemOptWrapper{
+  width:130px;
+  margin-left:20px;
+}
+.clock-main_itemLabel_spec{
+  color:#fff;
+}
+.clock-main-btm{
+  margin-top:20px;
+}
+.clock-main-btm::after{
+  display:block;
+  content:'';
+  clear:both;
+}
+.clock-main_btm_left{
+  float:left;
+  margin-left: 10px;
+}
+.clock-main_btm_right{
+  float:right;
+  width:100px;
+  margin-right:46px;
+}
+.dayPickContainer{
+  width:210px;
+  height:120px;
+}
+.weekPickContainer{
+  width:270px;
+}
+.dayPickContainer_item{
+  float:left;
+  width:30px;
+  height:30px;
+  line-height: 30px;
+  text-align: center;
+  cursor:pointer;
+}
+.weekPickContainer_item{
+  float:left;
+  width:80px;
+  height:40px;
+  text-align: center;
+  line-height: 40px;
+  cursor:pointer;
+}
+.dayPickContainer_itemActive,.weekPickContainer_itemActive{
+  background:#0088ff;
+  color:#fff;
+}

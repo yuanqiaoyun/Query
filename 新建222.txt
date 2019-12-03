@@ -1,1 +1,22 @@
 11.26本来是要推到aux分支上去的，结果是没推上去 写于17；12.
+
+
+//本地 查看历史版本界面
+file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/11-27%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95/Pages/Materials/history-view.html
+
+
+
+
+///  获取地址栏参数 并转化成JSAON 对象了
+var baseUrl = function GetRequest() {       
+    var theRequest = new Object(); 
+        var url = location.search;  //获取url中"?"符后的字符串
+    if (url.indexOf("?") != -1) {  
+        var strs = url.split("&");  
+        for (var i = 0; i < strs.length; i++) {   
+            theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);  
+        } 
+    } 
+    return theRequest;
+}
+console.log(baseUrl())

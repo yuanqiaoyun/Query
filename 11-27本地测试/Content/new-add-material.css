@@ -184,50 +184,10 @@ body{
 
 
 
-/* 权限选择的样式 */
-.authority-container{
-  height:180px;
-  border:1px solid #ccc;
-  background:#fff;
-  padding-bottom: 20px;
-}
-.authority-set{
-  font-size:14px;
-  padding:30px 0 0 30px;
-  color:#000;
-  font-weight:bold;
-}
-.authority-item{
-  display:flex;
-  align-items: center;
-  margin:15px 0  0 40px;
-  color:#000;
-}
 
-.authority-item_label{
-  font-size:12px;
-  font-weight:bold;
-}
-.authority-item_RadioWrap{
-  margin-left:5px;
-}
-.authority-item_RadioWrap .el-radio-button__inner{
-  background:#f2f2f2;
-}
-.authority-item_RadioWrap .el-radio-button__inner:hover{
-  background:rgba(185, 214, 240, 0.5);
-  color:#0088ff;
-}
-.authority-item_RadioWrap .el-radio-button:first-child .el-radio-button__inner{
-  border-left:none;
-}
-.authority-item_RadioWrap .el-radio-button__inner{
-  border:1px solid #fff;
-}
 
 .authority-dialog{
   width:400px;
-  height:235px;
 }
 .authority-header{
   display:flex;
@@ -240,53 +200,4 @@ body{
   height:18px;
   background:#0088ff;
   margin-right:5px;
-}
-.authority-dialog .el-dialog__body{
-   text-align: center;
-}
-.authority-dialog img{
-  width:48px;
-  height:48px;
-}
-.el-dialog__footer {
-  text-align: center;
-}
-.authority-dialog .el-button--medium{
-    padding:10px 40px;
-}
-.authority-dialog-roleUser{
-  width:530px;
-  height:350px;
-}
-.search-inp{
-  width:60%;
-}
-.list-wraper{
-     height: 170px;
-    overflow: auto;
-    border: 1px solid #ccc;
-    border-right: none;
-    margin-top: 5px;
-    padding: 30px 0 0 30px;
-}
-.checkboxWrapper{
-  width:100%;
-  height:100%;
-}
-.el-dialog__body{
-  padding-bottom:0px;
-}
-.list_item{
-  display: block;
-  margin-bottom: 11px;
-}
-.authority-dialog-roleUser .el-dialog__footer{
-   text-align:right;
-   padding-bottom: 0px;
-}
-.authority-dialog-roleUser .el-dialog__footer .checkAll{
-  margin-right: 269px;
-}
-.el-checkbox__label{
-  font-size:12px;
 }

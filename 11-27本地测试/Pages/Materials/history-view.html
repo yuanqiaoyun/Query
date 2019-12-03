@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>历史版本查询页面</title>
+  <link rel="stylesheet" href="../../Content/element-ui-212.css" />
+  <link rel="stylesheet" href="../../Content/history-view.css" />
+</head>
+<body>
+  <div id="history-view">
+    <div class="history-view-wraaper">
+      <div class="close">
+          <span class="el-icon-close history-close">关闭</span>
+      </div>
+      <div calss="history-view-content" >
+           <el-row>
+             <el-col :span=18>
+               <div class="history-view-content_mainL">
+                 <div class="history-view-content_mainL-header">
+                   <div class="history-view-content_mainL-header-url">
+                     <img src="../../Content/images/URL.png" style="width:33px;height:16px;vertical-align: middle;">
+                     <span class="history-view-content_mainL-header-urlTxt">用户中心>结算规范>服务手册</span>
+                   </div>
+                   <div style="color:#ccc;">历史资料</div>
+                 </div>
+                 <!-- 品牌和产品线开始 -->
+                 <div class="history-brandLiine">
+                   <span class="history-brandLiine_txt">美的</span>
+                   <span class="history-brandLiine_txt">奥克斯</span>
+                 </div>
+                <!-- 品牌和产品线开始 -->
+                <div class="history-title">技术服务手册</div>
+                <div class="history-abstract">
+                  <p class="history-abstract-txt">摘要:激素发案件开朗大方ask领导发哈但是看发哈康浪素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发案件开朗大方ask领导发哈但是看发哈康素发</p>
+                </div>
+                <div class="history-materials">
+                    <el-checkbox-group v-model="checkedAttach" @change="handleCheckGrup" class="history-materials-list">
+                        <el-checkbox v-for="item in attachList" :label="item" :key="item.attachment_id" class="history-materials-list-item">
+                          <span  class="history-materials-list-item-inner">
+                              <img src="../../Content/images/doc.png" class="history-materials-list-item_pic">
+                              <span class="history-materials-list-item_name">{{item.attachment_name}}</span>
+                              <span class="history-materials-list-item_size">{{(item.attachment_size)}}M</span>
+                              <span class="history-materials-list-item_author">{{item.attachment_uploader}}</span>
+                              <span class="history-materials-list-item_time">{{item.upload_on}}</span>
+                              <span class="el-icon-reading history-materials-list-item_preview"></span>
+                              <span class="el-icon-download history-materials-list-item_down"></span>
+                          </span>
+                        </el-checkbox>
+                      </el-checkbox-group>
+                </div>
+                <div class="history-material-footer">
+                    <el-checkbox v-model="checkAll" @change="handleCheckAllChange"><span @click="downMany">批量下载</span></el-checkbox>
+                </div>
+               </div>
+              </el-col>
+             <el-col :span=5>
+               <div class="history-view-content_mainR">
+                  <div class="history-view-content_mainR-header">
+                      <span class="history-view-content-mainR-ver">v1.20</span>
+                      <span class="history-view-content-mainR-deadline">有效期：2018-10-29</span>
+                  </div>
+                   <div class="history-view-content_mainR-bottom">
+                      <span class="history-view-content-mainR-author">作者：护花的快乐</span>
+                      <span class="history-view-content-mainR-modify">更新时间：2019-10-20 14:30</span>
+                   </div>
+             </div>
+            </el-col>
+           </el-row>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../../Scripts/axios.min.js"></script>
+<script src="../../Scripts/jquery.js"></script>
+<script src="../../Scripts/vue.js"></script>
+<script src="../../Scripts/element-ui-212.js"></script>
+<script src="../../Scripts/history-view.js"></script>
+</html>

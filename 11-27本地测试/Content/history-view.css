@@ -1,0 +1,137 @@
+body{
+  background:#f2f2f2;
+}
+.history-view-wraaper{
+  width:100%;
+  height:100%;
+}
+.history-close{
+  font-size:12px;
+  color:#0088ff;
+  font-weight:bold;
+}
+.history-view-content{
+   padding:10px;
+}
+.history-view-content_mainL{
+  background:#fff;
+  border:1px solid  #ccc;
+  font-size:12px;
+  padding:20px;
+}
+.history-view-content_mainL-header{
+   display:flex;
+   align-items: center;
+   justify-content: space-between;
+}
+.history-view-content_mainL-header-urlTxt{
+  font-size:12px;
+  margin-left:10px;
+}
+.history-brandLiine{
+  display:flex;
+  margin-top:20px;
+}
+.history-brandLiine_txt{
+  width:80px;
+  height:25px;
+  background:#0088ff;
+  text-align: center;
+  line-height: 25px;
+  color:#fff;
+  margin-right:10px;
+  border-radius: 3px;
+}
+.history-title{
+  margin-top:40px;
+  font-size:18px;
+  line-height: 30px;
+  text-align: center;
+  color:#333;
+}
+.history-abstract{
+  width:70%;
+  margin:0 auto;
+}
+.history-abstract-txt{
+  font-size:12px;
+  line-height: 25px;
+}
+.history-materials{
+  width:70%;
+  margin:0 auto;
+}
+.history-materials-list{
+  width:100%;
+}
+.history-materials-list-item{
+  display:flex;
+  height:32px;
+}
+.history-materials-list-item-inner{
+  display:flex;
+  align-items: center;
+}
+.history-materials-list-item_pic{
+  width:20px;
+  height:20px;
+  vertical-align: middle;
+}
+.history-materials-list-item_name{
+  width:300px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left:5px;
+}
+.history-materials-list-item_size,.history-materials-list-item_author{
+  width:100px;
+}
+.history-materials-list-item_author{
+  width:150px;
+  margin:0 20px;
+}
+.history-materials-list-item_time{
+  margin-right:20px;
+}
+.history-materials-list-item_size{
+  margin-left:120px;
+}
+.history-materials-list-item_preview,.history-materials-list-item_down{
+  width:30px;
+  margin:0 5px;
+  font-size:12px;
+  color:#0088ff;
+  font-weight:bolder;
+}
+.history-material-footer{
+  width:70%;
+  margin:0 auto;
+}
+.history-view-content_mainR{
+  margin-left:20px;
+  background:#fff;
+  padding:20px;
+}
+.history-view-content-mainR-ver{
+  width: 50px;
+  height: 30px;
+  background-color: rgba(153, 153, 153, 1);
+  border-radius:2px;
+  line-height:30px;
+  text-align: center;
+  padding:0 10px;
+}
+.history-view-content_mainR{
+  font-size:12px;
+  min-height:60vh;
+}
+.history-view-content_mainR-bottom{
+  margin-top:15px;
+}
+.history-view-content-mainR-deadline{
+  margin-left: 93px;
+}
+.history-view-content-mainR-modify{
+  margin-left:30px;
+}
