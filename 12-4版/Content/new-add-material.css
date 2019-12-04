@@ -1,0 +1,346 @@
+body {
+    background-color: #f2f2f2;
+}
+
+#newAdd > .el-row {
+    margin-right: 0 !important;
+}
+
+.form-item-container-yqy {
+    background: #fff;
+    margin-top: 10px;
+    padding: 50px 50px 50px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    border-bottom: 0px
+}
+
+.el-form-item__label {
+    font-weight: bold;
+}
+
+.fileList-item-action_hasUpload {
+    font-size: 12px;
+}
+
+.content-title {
+    height: 54px;
+    border-bottom: 1px solid #ccc;
+    line-height: 54px;
+    margin-left: 5px;
+}
+
+.icon-sign, .content-txt {
+    font-size: 12px;
+    color: #0088ff;
+}
+
+.cdialogcss .el-dialog__body {
+    padding: 0 20px 30px;
+    height: 65px;
+}
+
+.upcdialogcss .el-dialog__body {
+    padding: 0 20px 10px;
+    height: 65px;
+}
+.inPcontent .el-icon-folder-opened:before {
+    color: #4088ff;
+    font-weight: bolder;
+}
+/* //设置背景色 */
+.el-tree-node__content:hover {
+    background-color: rgba(0,136,255,0.1);
+    color: #0088ff;
+}
+
+.el-tree-node:focus > .el-tree-node__content {
+    color: #0088ff;
+    font-weight: bolder !important;
+}
+
+#version {
+    height: 300px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 0 0 #000;
+    margin-bottom: 5px;
+    background: #fff;
+    padding: 35px 15px 0 30px;
+    border-radius: 2px;
+}
+
+.v-set {
+    height: 40px;
+    line-height: 70px;
+    margin-bottom: 35px;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cur-version {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 12px;
+}
+
+.history {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ver-number {
+    width: 50px;
+    height: 25px;
+    background: #0088ff;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 25px;
+    margin-left: 10px;
+}
+
+#deadline {
+    height: 30px;
+    border: 1px solid #ccc;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 2px;
+    padding-left: 30px;
+    margin-top: 5px;
+    margin-top: 5px;
+}
+
+.dateLabel {
+    font-size: 12px;
+}
+
+.dateWrap {
+    margin-left: 20px;
+}
+
+.el-form-item__content {
+    font-size: 12px;
+}
+
+.el-form-item__label {
+    font-size: 12px;
+}
+
+.formStar {
+    color: #f00;
+    font-weight: 700px;
+}
+
+/* 资料上传 */
+#material-upload-wrapper {
+    background: #fff;
+    min-height: 300px;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.material-upload_top {
+    margin-left: 12px;
+    font-size: 12px;
+    line-height: 6px;
+    font-weight: bold
+}
+
+.upload-container {
+    margin-top: -15px;
+    margin-left: 5px;
+}
+
+.upload-txt {
+    color: gainsboro;
+    font-size: 12px;
+    padding-left: 40px;
+}
+
+.fileList-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 3px;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.fileList-item-action {
+    align-items: center;
+    font-size: 12px;
+}
+
+.action_up-status {
+    margin: 0 15px;
+    color: #f00;
+}
+
+.action_up-size {
+    font-size: 13px;
+    color: #000;
+    margin-right: 13px;
+    width: 100px;
+}
+
+.smallBtn {
+    padding: 3px 7px;
+}
+
+.clsoeWranMark-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 40px;
+    background-color: #ff9200;
+    color: #fff;
+    margin: 10px auto;
+}
+
+.clsoeErrorTxt {
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+}
+
+.saveWranMark-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 40px;
+    background-color: #0aef50;
+    color: #fff;
+    margin: 10px auto;
+}
+
+.saveErrorTxt {
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+}
+
+.el-input {
+    font-size: 12px;
+}
+
+.cdialogcss .el-dialog__title {
+    position: relative;
+    font-size: 12px;
+}
+    .cdialogcss .el-dialog__title::before {
+        display: inline-block;
+        content: "";
+        width: 4px;
+        height: 18px;
+        background: #0088ff;
+        position: absolute;
+        top: 0px;
+        left: -8px;
+    }
+
+.cdialogcss {
+    width: 400px;
+    height: 200px
+}
+
+.el-dialog__footer {
+    padding: 0px;
+    text-align: center;
+}
+
+    .el-dialog__footer button {
+        width: 100px;
+        height: 32px;
+        line-height: 0;
+        font-size: 12px;
+    }
+
+.el-dialog__header {
+    padding: 10px 20px 10px;
+}
+
+.el-textarea {
+    font-size: 12px;
+}
+
+    .el-textarea textarea {
+        font: 400 12px Arial;
+    }
+
+.fileList-item-info_pic {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle
+}
+
+.fileList-item-action {
+    align-items: center
+}
+
+.contentDialog {
+    width: 30%;
+    height: 500px;
+}
+
+.content-mainDialog {
+    height: 300px;
+    overflow: auto;
+}
+
+/* 历史版本模块 */
+.historyContain {
+    height: 100px;
+    margin-top: 20px;
+    overflow: auto;
+}
+
+.history_item {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    justify-content: space-between;
+    height: 32px;
+}
+
+    .history_item:hover {
+        color: #0088ff;
+        cursor: pointer;
+    }
+
+.history_item-ver {
+    width: 10%;
+    height: 20px;
+    background-color: rgba(153, 153, 153, 1);
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 2px;
+}
+
+.history_item-name {
+    width: 40%;
+    margin-left: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.history_item-author {
+    width: 10%;
+    text-align: center;
+    margin: 0 5%;
+}
+
+.history_item-time {
+    width: 30%;
+    text-align: right;
+}
