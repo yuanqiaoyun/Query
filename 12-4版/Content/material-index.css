@@ -129,7 +129,11 @@ body {
     color: #0088ff;
     font-weight: bolder !important;
 }
-
+/*点击选中时绑定一个类名 */
+.treeNodeSeleted{
+    color: #0088ff;
+    font-weight: bolder !important;
+}
 .el-popover {
     padding: 0px 0px;
     margin-top: 40px;

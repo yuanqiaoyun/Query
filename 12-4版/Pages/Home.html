@@ -1,18 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Css.Crm.KMS.Web.Home" %>
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" type="text/css" href="../Content/element-ui-212.css?v=1.1" />
     <link rel="stylesheet" type="text/css" href="../Content/reset.css?v=1.1" />
     <link rel="stylesheet" type="text/css" href="../Content/material-index.css?v=1.1" />
     <link rel="stylesheet" type="text/css" href="../Content/yqyOpenMenu.css?v=1.1"/>
-   
-    <title></title>
     
     <style type="text/css">
         .materials-tabTit-tabs .el-tabs__item {
@@ -36,7 +32,6 @@
       </div>
       <div class="search_directory">
           <el-select v-model="searchDirectory"  @change="handleSearchDirectorychange">
-              <el-option value="" label="请选择"></el-option>
               <el-option value="1" label="当前目录"></el-option>
               <el-option value="2" label="当前目录及子目录"></el-option>
               <el-option value="3" label="所有目录"></el-option>
@@ -44,7 +39,6 @@
       </div>
       <div class="search_tit">
           <el-select v-model="searchTit" placeholder="请选择" @change="handleSearchTitchange">
-              <el-option value="" label="请选择"></el-option>
               <el-option value="1" label="标题搜索"></el-option>
               <el-option value="2" label="摘要搜索"></el-option>
               <el-option value="3" label="附录搜索"></el-option>
@@ -62,7 +56,7 @@
             <el-tree :data="treeContent" :default-expanded-keys="expandedkeys" @node-expand="handleExpand" @node-collapse="handleCollapse" node-key="id" highlight-curren @node-click="handleNodeClick"
               :props="defalutProps" @node-contextmenu="handleNodeContextMenu">
                 <span slot-scope="{ node, data }">
-                <span>{{data.name}}</span>
+                <span :class="{ treeNodeSeleted: data.id == materialdirectoryid }">{{data.name}}</span>
                 <span v-if="node.level!=1" style="margin-left:3px;color:#f00">{{data.quantity_expire==0||data.quantity_expire == null?'':data.quantity_expire}}</span>
               </span></el-tree>
           </div>
@@ -114,7 +108,7 @@
               </el-table-column>
               <el-table-column label="操作" align="left" width="200">
                 <template slot-scope="scope">
-                  <%--<el-button v-if="scope.row.If_edit_flag == 1" size="mini" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button>--%>
+                  <!-- <el-button v-if="scope.row.If_edit_flag == 1" size="mini" icon="el-icon-edit" @click="handleEdit(scope.row)">编辑</el-button> -->
                     <i v-if="scope.row.If_edit_flag == 1" class="el-icon-edit" style="color: #0088ff; cursor: pointer;" @click="handleEdit(scope.row)">编辑</i>
                       <i v-if="scope.row.If_delete_flag == 1" class="el-icon-delete" style="color: #0088ff;margin-left: 5px; cursor: pointer;" @click="handleDelete(scope.$index, scope.row)">删除</i>
                 </template>
@@ -154,7 +148,6 @@
       <span slot="footer" class="dialog-footer">
             <el-button type="primary" @click="cfmRename">确 定</el-button>
         <el-button @click="reNameVisible = false">取 消</el-button>
-      
       </span>
     </el-dialog>
  

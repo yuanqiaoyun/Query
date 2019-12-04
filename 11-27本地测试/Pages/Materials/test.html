@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试获取路径中的参数</title>
+</head>
+<body>
+   <div id="app">
+     <div></div>
+     <div></div>
+     <div></div>
+     <div></div>
+   </div>
+</body>
+<script type="text/javascript">
+  function  getUrlRequest() {       
+      // var theRequest = new Object(); 
+      var theRequest ={};
+          var url = 'id=111&userId=2222&materialId=33333';  //获取url中"?"符后的字符串
+ 
+          var strs = url.substring(1).split("&");  
+          for (var i = 0; i < strs.length; i++) {   
+              var key1 = strs[i].split("=")[0];
+              var value = strs[i].split("=")[1]
+              // theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);  
+              theRequest[key1]= value;
+              // theRequest.key1 =value;
+          } 
+      
+      // return theRequest;
+      console.log(theRequest);
+    };
+    getUrlRequest();
+    app.children();
+</script>
+</html>

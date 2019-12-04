@@ -1,20 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InsertForm.aspx.cs" Inherits="Css.Crm.KMS.Web.Pages.Materials.InsertForm" %>
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<html>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../../Content/element-ui.css?v=1.1" />
     <link rel="stylesheet" href="../../Content/reset.css?v=1.1" />
     <link rel="stylesheet" href="../../Content/new-add-material.css?v=1.1" />
-    <title></title>
+    <title>新建</title>
     <style type="text/css">
           .contentDialog {
           width: 30%;
           height: 450px;
       }
-
     </style>
 </head>
  <body>
@@ -73,7 +70,7 @@
       </div>
       <div id="deadline">
         <span class="dateLabel">有效期<i  class="formStar">*</i></span>
-        <span class="dateWrap"><el-date-picker type="date" placeholder="选择日期" disabled v-model="formData.deadline"></el-date-picker></span>
+        <span class="dateWrap"><el-date-picker type="date" placeholder="选择日期"  v-model="formData.deadline" @change="hadnldeDatePickChange" value-format="yyyy-MM-dd"></el-date-picker></span>
       </div>
       </el-col>
     </el-row>

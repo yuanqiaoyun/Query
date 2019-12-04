@@ -35,7 +35,7 @@ var materialView = new Vue({
         //1.获取用户id
         getUserId() {
             $.ajax({
-                url: "/ISV/kms/api/Crm/GetCurrentUser",
+                url: "http://10.151.66.61:8099/api/Crm/GetCurrentUser",
                 type: "get",
                 success: function (res) {
                     vueData.userId = res.responseData.UserId;
@@ -58,7 +58,7 @@ var materialView = new Vue({
         //3.获取资料详情内容
         getMaterialDetail() {
             var materialId = vueData.materialId;
-            axios.get('/ISV/kms/api/Material/GetItem?materialid=' + materialId + '').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Material/GetItem?materialid=' + materialId + '').then(function (res) {
                 console.log(res);
                 vueData.materialDetail = res.data.responseData;
                 vueData.attachList = res.data.responseData.material_attachment;
@@ -94,12 +94,12 @@ var materialView = new Vue({
             })
         },
         toHistoryView(historyId) {
-            window.open("HistoryView.aspx?id=" + historyId);
+            window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/HistoryView.html?id=" + historyId);
         },
         //7.跳到编辑页面
         toEdit() {
             $.ajax({
-                url: "/ISV/kms/api/Material/GetMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId ,
+                url: "http://10.151.66.61:8099/api/Material/GetMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId ,
                 type: "post",
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -120,7 +120,7 @@ var materialView = new Vue({
                         }
                         if (!if_edit_state) {//未编辑
                             $.ajax({
-                                url: "/ISV/kms/api/Material/UpdateMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId + "&if_edit_state=true",
+                                url: "http://10.151.66.61:8099/api/Material/UpdateMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId + "&if_edit_state=true",
                                 type: "post",
                                 success: function (res) {
                                     if (res.responseStatus == "S") {
@@ -207,7 +207,7 @@ var materialView = new Vue({
         },
         getHistoryMaterial() {
             $.ajax({
-                url: '/ISV/kms/api/Material/GetHistoryMaterialList?id=' + vueData.materialId,
+                url: 'http://10.151.66.61:8099/api/Material/GetHistoryMaterialList?id=' + vueData.materialId,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {

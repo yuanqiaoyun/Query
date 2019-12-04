@@ -30,4 +30,119 @@
 {name: "代理", roleid: "acac451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0}
  ],
 
- // 资料的数据
+ // 资料的数据表格的数据
+[{"id":"f89609f6-3416-ea11-80ca-f9a07b86efd6","name":"12345","sapcompanycode":"1122","competebrand":1,"competebrandname":"奥克斯","number":"1","current_version":"1.2","ownerid":"2fc6451a-6a73-e811-80c7-8bf578caaadf","owner_name":"crmadminadmin","modifiedon":"2019-12-04","validity_date":"2020-11-29","directoryid":"1d1632fd-5612-ea11-80c9-dd15762e6a74","modify_name":"crmadminadmin","If_read_flag":1,"If_edit_flag":1,"If_download_flag":1,"If_delete_flag":1,"If_author":1},
+{"id":"7e3f52d6-6b16-ea11-80ca-f9a07b86efd6","name":"测试一下升版哈哈哈哈","sapcompanycode":"1122","competebrand":1,"competebrandname":"奥克斯","number":"1","current_version":"1.2","ownerid":"2fc6451a-6a73-e811-80c7-8bf578caaadf","owner_name":"crmadminadmin","modifiedon":"2019-12-04","validity_date":"2020-12-02","directoryid":"1d1632fd-5612-ea11-80c9-dd15762e6a74","modify_name":"crmadminadmin","If_read_flag":1,"If_edit_flag":1,"If_download_flag":1,"If_delete_flag":1,"If_author":1},
+{"id":"1c85fe2e-6c16-ea11-80ca-f9a07b86efd6","name":"测试一下升版叭叭叭吧","sapcompanycode":"1122","competebrand":1,"competebrandname":"奥克斯","number":"1","current_version":"1.0","ownerid":"8ffe0f90-6a75-e811-80c7-822b5c0c59bf","owner_name":"江维杰","modifiedon":"2019-12-04","validity_date":"2020-12-04","directoryid":"1d1632fd-5612-ea11-80c9-dd15762e6a74","modify_name":"江维杰","If_read_flag":1,"If_edit_flag":1,"If_download_flag":1,"If_delete_flag":0,"If_author":0},
+{"id":"ccde1ece-6d16-ea11-80ca-f9a07b86efd6","name":"111","sapcompanycode":"1122","competebrand":1,"competebrandname":"奥克斯","number":"1","current_version":"1.0","ownerid":"8ffe0f90-6a75-e811-80c7-822b5c0c59bf","owner_name":"江维杰","modifiedon":"2019-12-04","validity_date":"2019-12-04","directoryid":"1d1632fd-5612-ea11-80c9-dd15762e6a74","modify_name":"江维杰","If_read_flag":1,"If_edit_flag":1,"If_download_flag":1,"If_delete_flag":0,"If_author":0},
+{"id":"8c80ea26-6216-ea11-80ca-f9a07b86efd6","name":"1204完整测试一次","sapcompanycode":"1122","competebrand":3,"competebrandname":"美的","number":"3","current_version":"1.3","ownerid":"2fc6451a-6a73-e811-80c7-8bf578caaadf","owner_name":"crmadminadmin","modifiedon":"2019-12-04","validity_date":"2019-12-04","directoryid":"1d1632fd-5612-ea11-80c9-dd15762e6a74","modify_name":"crmadminadmin","If_read_flag":1,"If_edit_flag":1,"If_download_flag":1,"If_delete_flag":1,"If_author":1}
+]
+
+//返回的目录数据
+[{"name":"Test","id":"d92498f5-ec11-ea11-80c9-dd15762e6a74","parentid":null,"quantity_expire":"0","children":[]},
+{"name":"yalingtest","id":"392ce191-4312-ea11-80c9-dd15762e6a74","parentid":null,"quantity_expire":"11",
+       "children":[ {"name":"test01","id":"87d525d2-4312-ea11-80c9-dd15762e6a74","parentid":"392ce191-4312-ea11-80c9-dd15762e6a74","quantity_expire":"11",
+                             "children":[{"name":"liwu_test","id":"1d1632fd-5612-ea11-80c9-dd15762e6a74","parentid":"87d525d2-4312-ea11-80c9-dd15762e6a74","quantity_expire":"2","children":[]},
+                                         {"name":"liwu_test2","id":"3728b01a-5912-ea11-80c9-dd15762e6a74","parentid":"87d525d2-4312-ea11-80c9-dd15762e6a74","quantity_expire":"0","children":[]}]},
+                    {"name":"test02","id":"0ebe08c1-5712-ea11-80c9-dd15762e6a74","parentid":"392ce191-4312-ea11-80c9-dd15762e6a74","quantity_expire":"0","children":[]}]}]}
+//返回用户的数据
+{name: "商用销售001", userid: "ab593351-9efc-e911-80c6-810af1bf3d40", if_select_flag: 0}
+1: {name: "大连中心-商技术主管", userid: "48343614-1cfd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+2: {name: "大连中心-配件主管", userid: "1b8be4da-1dfd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+3: {name: "大连中心-售后经理", userid: "635efaff-1dfd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+4: {name: "大连中心-信息主管", userid: "ed24aa14-1ffd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+5: {name: "大连中心-家技术主管", userid: "90381ab8-1ffd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+6: {name: "大连中心-结算", userid: "0032bbcc-1ffd-e911-80c6-810af1bf3d40", if_select_flag: 0}
+7: {name: "万龙章", userid: "9e872c6c-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+8: {name: "袁亚宾", userid: "b3872c6c-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+9: {name: "施云", userid: "dc872c6c-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+10: {name: "崔勇涛", userid: "f1872c6c-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+11: {name: "马坡", userid: "9ecb2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+12: {name: "杨贵荣", userid: "c8cb2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+13: {name: "南京中心-商技术主管", userid: "04cc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+14: {name: "长沙中心-商技术主管", userid: "1acc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+15: {name: "南昌中心-商技术主管", userid: "2ecc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+16: {name: "徐州中心-商技术主管", userid: "43cc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+17: {name: "天津中心-商技术主管", userid: "58cc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+18: {name: "温州中心-商技术主管", userid: "6dcc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+19: {name: "福州中心-商技术主管", userid: "82cc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+20: {name: "宁波中心-商技术主管", userid: "97cc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+21: {name: "北京中心-商技术主管", userid: "accc2472-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+22: {name: "郑州中心-商技术主管", userid: "b3662578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+23: {name: "沈阳中心-商技术主管", userid: "c8662578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+24: {name: "合肥中心-商技术主管", userid: "dd662578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+25: {name: "成都中心-商技术主管", userid: "f2662578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+26: {name: "杭州中心-商技术主管", userid: "07672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+27: {name: "上海中心-商技术主管", userid: "1c672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+28: {name: "重庆中心-商技术主管", userid: "30672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+29: {name: "广州中心-商技术主管", userid: "45672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+30: {name: "武汉中心-商技术主管", userid: "5a672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+31: {name: "西安中心-商技术主管", userid: "6f672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+32: {name: "深圳中心-商技术主管", userid: "84672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+33: {name: "太原中心-商技术主管", userid: "98672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+34: {name: "济南中心-商技术主管", userid: "ac672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+35: {name: "南京中心-家技术主管", userid: "c0672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+36: {name: "长沙中心-家技术主管", userid: "d4672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+37: {name: "南昌中心-家技术主管", userid: "e9672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+38: {name: "徐州中心-家技术主管", userid: "fe672578-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+39: {name: "天津中心-家技术主管", userid: "46741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+40: {name: "温州中心-家技术主管", userid: "5b741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+41: {name: "福州中心-家技术主管", userid: "6f741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+42: {name: "济宁中心-家技术主管", userid: "84741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+43: {name: "宁波中心-家技术主管", userid: "99741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+44: {name: "郑州中心-家技术主管", userid: "ae741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+45: {name: "沈阳中心-家技术主管", userid: "c3741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+46: {name: "合肥中心-家技术主管", userid: "d7741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+47: {name: "成都中心-家技术主管", userid: "ec741f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+48: {name: "杭州中心-家技术主管", userid: "01751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+49: {name: "上海中心-家技术主管", userid: "16751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+50: {name: "重庆中心-家技术主管", userid: "2b751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+51: {name: "广州中心-家技术主管", userid: "3f751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+52: {name: "武汉中心-家技术主管", userid: "68751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+53: {name: "西安中心-家技术主管", userid: "7d751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+54: {name: "深圳中心-家技术主管", userid: "92751f7e-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+55: {name: "太原中心-家技术主管", userid: "4ae71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+56: {name: "北京中心-家技术主管", userid: "5fe71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+57: {name: "济南中心-家技术主管", userid: "74e71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+58: {name: "南宁中心-家技术主管", userid: "89e71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+59: {name: "驻马店中心-家技术主管", userid: "9ee71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+60: {name: "石家庄中心-家技术主管", userid: "b3e71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+61: {name: "南通中心-家技术主管", userid: "c8e71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+62: {name: "无锡中心-家技术主管", userid: "dde71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+63: {name: "叶锡军", userid: "f2e71884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+64: {name: "薛梅", userid: "06e81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+65: {name: "杨浩", userid: "1de81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+66: {name: "杨林阳", userid: "32e81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+67: {name: "章张浩", userid: "5be81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+68: {name: "周伟俊", userid: "70e81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+69: {name: "许伟", userid: "85e81884-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+70: {name: "戴美珍", userid: "652b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+71: {name: "杨毓玉", userid: "792b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+72: {name: "北京中心-配件主管1", userid: "8e2b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+73: {name: "北京中心-配件主管2", userid: "a32b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+74: {name: "成都中心-配件主管", userid: "b82b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+75: {name: "福州中心-配件主管", userid: "cd2b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+76: {name: "广州中心-配件主管", userid: "e22b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+77: {name: "合肥中心-配件主管", userid: "f72b118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+78: {name: "济南中心-配件主管", userid: "0c2c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+79: {name: "南昌中心-配件主管", userid: "202c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+80: {name: "南宁中心-配件主管", userid: "362c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+81: {name: "宁波中心-配件主管1", userid: "4a2c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+82: {name: "宁波中心-配件主管2", userid: "5f2c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+83: {name: "上海中心-配件主管", userid: "742c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+84: {name: "深圳中心-配件主管", userid: "892c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+85: {name: "沈阳中心-配件主管", userid: "9e2c118a-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+86: {name: "天津中心-配件主管", userid: "c0fd0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+87: {name: "无锡中心-配件主管1", userid: "d4fd0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+88: {name: "无锡中心-配件主管3", userid: "fefd0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+89: {name: "武汉中心-配件主管", userid: "13fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+90: {name: "西安中心-配件主管", userid: "27fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+91: {name: "长沙中心-配件主管", userid: "3cfe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+92: {name: "郑州中心-配件主管1", userid: "51fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+93: {name: "重庆中心-配件主管", userid: "7afe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+94: {name: "江维杰", userid: "8ffe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+95: {name: "茅雯雯", userid: "a3fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+96: {name: "邢凡敏", userid: "b9fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+97: {name: "姚琼芳", userid: "cbfe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+98: {name: "张丽", userid: "e0fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}
+99: {name: "朱双飞", userid: "f4fe0f90-6a75-e811-80c7-822b5c0c59bf", if_select_flag: 0}

@@ -32,7 +32,7 @@ var historyView = new Vue({
         //
         getHistoryMaterialDetail() {
             $.ajax({
-                url: '/ISV/kms/api/Material/GetHistoryMaterial?id=' + vueData.urlPramas.id,
+                url: 'http://10.151.66.61:8099/api/Material/GetHistoryMaterial?id=' + vueData.urlPramas.id,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {

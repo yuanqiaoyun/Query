@@ -1,16 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditForm.aspx.cs" Inherits="Css.Crm.KMS.Web.Pages.Materials.EditForm" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title></title>
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
   <link rel="stylesheet" href="../../Content/element-ui.css?v=1.1" />
   <link rel="stylesheet" href="../../Content/reset.css?v=1.1"/>
   <link rel="stylesheet" href="../../Content/new-add-material.css?v=1.1"/>
-    <link href="../../Content/material-edit.css?v=1.1" rel="stylesheet" />
+  <link href="../../Content/material-edit.css?v=1.1" rel="stylesheet" />
 </head>
 <body>
   <div id="materialEdit">
@@ -94,40 +90,27 @@
            <ul class="fileList-container">
               <li class="fileList-item" v-for="(attaItem,index) in attachedList" :key="attaItem.attachment_id">
                <div class="fileList-item-info">
-                <img v-if="attaItem.attachment_type.toLowerCase() == 'doc'" class="fileList-item-info_pic"
-                  src="../../Content/images/doc.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'docx'" class="fileList-item-info_pic"
-                  src="../../Content/images/doc.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'ppt'" class="fileList-item-info_pic"
-                  src="../../Content/images/ppt.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'pptx'" class="fileList-item-info_pic"
-                  src="../../Content/images/ppt.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'xls'" class="fileList-item-info_pic"
-                  src="../../Content/images/xls.png">
-               <img v-else-if="attaItem.attachment_type.toLowerCase() == 'xlsx'" class="fileList-item-info_pic"
-                  src="../../Content/images/xls.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'txt'" class="fileList-item-info_pic"
-                  src="../../Content/images/txt.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'jpg'" class="fileList-item-info_pic"
-                  src="../../Content/images/jpg.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase() == 'png'" class="fileList-item-info_pic"
-                    src="../../Content/images/jpg.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase() == 'jpeg'" class="fileList-item-info_pic"
-                    src="../../Content/images/jpg.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'pdf'" class="fileList-item-info_pic"
-                  src="../../Content/images/pdf.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'zip'" class="fileList-item-info_pic"
-                  src="../../Content/images/zip.png">
-                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'rar'" class="fileList-item-info_pic"
-                  src="../../Content/images/zip.png">
-                 <img v-else-if="attaItem.attachment_type.toLowerCase()== 'avi'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== 'mov'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== 'rmvb'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== 'rm'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== 'flv'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== 'mp4'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                   <img v-else-if="attaItem.attachment_type.toLowerCase()== '3gp'" class="fileList-item-info_pic" src="../../Content/images/video.png">
-                    <img v-else  class="fileList-item-info_pic" src="../../Content/images/file.png">
+                <img v-if="attaItem.attachment_type.toLowerCase() == 'doc'" class="fileList-item-info_pic" src="../../Content/images/doc.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'docx'" class="fileList-item-info_pic"src="../../Content/images/doc.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'ppt'" class="fileList-item-info_pic" src="../../Content/images/ppt.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'pptx'" class="fileList-item-info_pic"src="../../Content/images/ppt.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'xls'" class="fileList-item-info_pic" src="../../Content/images/xls.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'xlsx'" class="fileList-item-info_pic" src="../../Content/images/xls.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'txt'" class="fileList-item-info_pic" src="../../Content/images/txt.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'jpg'" class="fileList-item-info_pic" src="../../Content/images/jpg.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'png'" class="fileList-item-info_pic" src="../../Content/images/jpg.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'jpeg'" class="fileList-item-info_pic"src="../../Content/images/jpg.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'pdf'" class="fileList-item-info_pic" src="../../Content/images/pdf.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'zip'" class="fileList-item-info_pic" src="../../Content/images/zip.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase() == 'rar'" class="fileList-item-info_pic" src="../../Content/images/zip.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'avi'" class="fileList-item-info_pic"  src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'mov'" class="fileList-item-info_pic"  src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'rmvb'" class="fileList-item-info_pic" src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'rm'" class="fileList-item-info_pic"   src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'flv'" class="fileList-item-info_pic"  src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== 'mp4'" class="fileList-item-info_pic"  src="../../Content/images/video.png">
+                <img v-else-if="attaItem.attachment_type.toLowerCase()== '3gp'" class="fileList-item-info_pic"  src="../../Content/images/video.png">
+                <img v-else  class="fileList-item-info_pic" src="../../Content/images/file.png">
                 <span style="vertical-align: middle;font-size:12px">{{attaItem.attachment_name}}</span>
                </div>
                <div class="fileList-item-action">
@@ -197,9 +180,9 @@
         </div>
       </div>
       <!-- 指定角色权限结束 -->
-      <div id="deadline">
+      <div id="deadline" v-if="If_author">
         <span class="dateLabel">有效期<i  class="formStar">*</i></span>
-        <span class="dateWrap"><el-date-picker type="date" placeholder="选择日期" disabled v-model="formData.deadline"></el-date-picker></span>
+        <span class="dateWrap"><el-date-picker type="date" placeholder="选择日期"  v-model="formData.deadline" @change="hadnldeDatePickChange"></el-date-picker></span>
       </div>
            <!-- 提醒设置开始 -->
       <div class="clockContainer" v-if="If_author">

@@ -223,7 +223,7 @@ var materialEdit = new Vue({
         // 获取用户userID 
         getUserId() {
             $.ajax({
-                url: "/ISV/kms/api//Crm/GetCurrentUser",
+                url: "http://10.151.66.61:8099/api//Crm/GetCurrentUser",
                 type: "get",
                 success: function (res) {
                     vueData.userId = res.responseData.UserId;
@@ -235,7 +235,7 @@ var materialEdit = new Vue({
         },
         //2.获取目录文件数据
         getContentList() {
-            axios.get('/ISV/kms/api//Directory/GetDirctory').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api//Directory/GetDirctory').then(function (res) {
                 vueData.treeContent = res.data.responseData;
             }).catch((function (err) {
                 console.log(err)
@@ -243,7 +243,7 @@ var materialEdit = new Vue({
         },
         //3.获取产品线
         getprdtList() {
-            axios.get('/ISV/kms/api//Basic/GetProductList').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api//Basic/GetProductList').then(function (res) {
                 vueData.prdtLines = res.data.responseData;
             }).catch(function (err) {
                 console.log("获取产品线失败", err)
@@ -252,7 +252,7 @@ var materialEdit = new Vue({
         },
         //4.获取品牌
         getBrandsList(id) {
-            axios.get('/ISV/kms/api//Basic/GetBrandtList?productId=' + id + '').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api//Basic/GetBrandtList?productId=' + id + '').then(function (res) {
                 vueData.brands = res.data.responseData;
             }).catch(function (err) {
                 console.log("获取产品线失败", err)
@@ -294,7 +294,7 @@ var materialEdit = new Vue({
         },
         //7.点击保存按钮
         cfmSaveMaterial(formName) {
-        
+            
             var phone = vueData.phone;  //电话
             var week = vueData.selectedWeek; //每周选择的周几
             var day = vueData.selectedDay;  //每月选择的天
@@ -389,10 +389,16 @@ var materialEdit = new Vue({
                     backPhone = phone;
                     backday = "9999-12-" + day +" "+ timer;
                 }
+                if(moment(vueData.formData.deadline).isBefore(curDate)){
+                    return that.$message({
+                        message: '保存失败,有效期不合格',
+                        type: 'warning'
+                    });
+                }
 
                 if (valid) {
                     $.ajax({
-                        url: '/ISV/kms/api//Material/UpdateMaterial?id=' + vueData.materialId,
+                        url: 'http://10.151.66.61:8099/api//Material/UpdateMaterial?id=' + vueData.materialId,
                         type: 'post',
                         data: {
                             "material_directoryid": vueData.formData.directoryId,
@@ -540,7 +546,7 @@ var materialEdit = new Vue({
 
                     if (valid) {
                         $.ajax({
-                            url: '/ISV/kms/api//Material/VersionUpgrade?', 
+                            url: 'http://10.151.66.61:8099/api//Material/VersionUpgrade?', 
                             type: 'post',
                             data: {
                                 "material_directoryid": vueData.formData.directoryId,
@@ -581,7 +587,7 @@ var materialEdit = new Vue({
         },
         //8.根据后端返回的资料id qu 查询资料详情
         getMaterialDetail(materialId) {
-            axios.get('/ISV/kms/api/Material/GetItem?materialid=' + materialId + '').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Material/GetItem?materialid=' + materialId + '').then(function (res) {
                 //  console.log(res.data.responseData);
                 vueData.formData.directoryId = res.data.responseData.material_directoryid;
                 vueData.formData.contentInDir = res.data.responseData.material_directory_name;
@@ -681,7 +687,7 @@ var materialEdit = new Vue({
             formData.append("size", size);
             formData.append("filetype", filetype);
             $.ajax({
-                url: '/ISV/kms/api/Material/UploadSingleMaterial', /*接口域名地址*/
+                url: 'http://10.151.66.61:8099/api/Material/UploadSingleMaterial', /*接口域名地址*/
                 type: 'post',
                 data: formData,
                 contentType: false,
@@ -720,7 +726,7 @@ var materialEdit = new Vue({
 
             $.ajax({
                 url:
-                    "/ISV/kms/api/Material/DisabledMaterial?id=" +
+                    "http://10.151.66.61:8099/api/Material/DisabledMaterial?id=" +
                     vueData.materialId +
                     "&userid=" +
                     vueData.userId +
@@ -745,7 +751,7 @@ var materialEdit = new Vue({
         cfmDeleAttach() {
             //调用删除已上传的附件
             $.ajax({
-                url: '/ISV/kms/api/Material/DelSingleMaterial',
+                url: 'http://10.151.66.61:8099/api/Material/DelSingleMaterial',
                 type: 'post',
                 data: {
                     attachment_id: vueData.cur_attachmentId,
@@ -763,7 +769,8 @@ var materialEdit = new Vue({
             });
         },
         toHistoryView(historyId) {
-            window.open("HistoryView.aspx?id=" + historyId);
+            // window.open("HistoryView.aspx?id=" + historyId);
+            window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/HistoryView.html?id=" + historyId);
         },
         saveClose() {
             saveVisible = false;
@@ -771,7 +778,7 @@ var materialEdit = new Vue({
         },
         cfmCloseDir() {
             $.ajax({
-                url: "/ISV/kms/api/Material/UpdateMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId + "&if_edit_state=false",
+                url: "http://10.151.66.61:8099/api/Material/UpdateMaterialState?id=" + vueData.materialId + "&userid=" + vueData.userId + "&if_edit_state=false",
                 type: "post",
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -790,7 +797,7 @@ var materialEdit = new Vue({
         },
         getHistoryMaterial() {
             $.ajax({
-                url: '/ISV/kms/api/Material/GetHistoryMaterialList?id=' + vueData.materialId,
+                url: 'http://10.151.66.61:8099/api/Material/GetHistoryMaterialList?id=' + vueData.materialId,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -810,7 +817,7 @@ var materialEdit = new Vue({
 
         getPermissionsList() {
             $.ajax({
-                url: '/ISV/kms/api/Permissions/GetPermissionsList?id=' + vueData.materialId,
+                url: 'http://10.151.66.61:8099/api/Permissions/GetPermissionsList?id=' + vueData.materialId,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -849,7 +856,7 @@ var materialEdit = new Vue({
         //1.获取用户角色列表
         getUserRoleList(id, type) {
             $.ajax({
-                url: '/ISV/kms/api/Crm/GetRoleList?id=' + id + '&type=' + type + '&search=' + vueData.txtRoleValue,
+                url: 'http://10.151.66.61:8099/api/Crm/GetRoleList?id=' + id + '&type=' + type + '&search=' + vueData.txtRoleValue,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -877,7 +884,7 @@ var materialEdit = new Vue({
         //2.获取用户列表
         getUserList(id, type) {
             $.ajax({
-                url: '/ISV/kms/api/Crm/GetUserList?id=' + id + '&type=' + type + '&search=' + vueData.txtUserValue,
+                url: 'http://10.151.66.61:8099/api/Crm/GetUserList?id=' + id + '&type=' + type + '&search=' + vueData.txtUserValue,
                 type: 'get',
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -906,7 +913,6 @@ var materialEdit = new Vue({
         // 监听权限选择的事件new_type 访问类型，new_permissions_type 权限类型
         //
         handleAuthorityChange(permis, type) {
-
             var id = vueData.materialId;
             vueData.selectPermis = permis;
             vueData.selectType = type;
@@ -998,7 +1004,7 @@ var materialEdit = new Vue({
             var id = vueData.materialId;
             vueData.authorityVisible = false;
             $.ajax({
-                url: '/ISV/kms/api/Permissions/SetPermissions',
+                url: 'http://10.151.66.61:8099/api/Permissions/SetPermissions',
                 type: 'post',
                 data: {
                     "id": id,
@@ -1035,7 +1041,7 @@ var materialEdit = new Vue({
 
             if (vueData.selectPermis == '2') {
                 $.ajax({
-                    url: '/ISV/kms/api/Permissions/SetPermissions',
+                    url: 'http://10.151.66.61:8099/api/Permissions/SetPermissions',
                     type: 'post',
                     data: {
                         "id": id,
@@ -1059,7 +1065,7 @@ var materialEdit = new Vue({
             }
             if (vueData.selectPermis == '3') {
                 $.ajax({
-                    url: '/ISV/kms/api/Permissions/SetPermissions',
+                    url: 'http://10.151.66.61:8099/api/Permissions/SetPermissions',
                     type: 'post',
                     data: {
                         "id": id,
@@ -1123,6 +1129,19 @@ var materialEdit = new Vue({
                 }
             })
         },
+        //选择日期变化
+        hadnldeDatePickChange(value){
+            console.log(value);
+            var curDate = moment().format("YYYY-MM-DD");
+            if(moment(value).isBefore(curDate)){
+             this.$message({
+                 message: '选择的日期无效',
+                 type: 'warning',
+                 customClass: 'errormsgcss'
+               });
+            };
+            vueData.formData.deadline = value;
+         }
 
     }
 })

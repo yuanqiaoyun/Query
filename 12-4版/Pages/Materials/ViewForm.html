@@ -1,9 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewForm.aspx.cs" Inherits="Css.Crm.KMS.Web.Pages.Materials.ViewForm" %>
-
+﻿
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<html>
+<head >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <link rel="stylesheet" href="../../Content/element-ui-212.css?v=1.1" />
@@ -82,8 +81,8 @@
                   <span class="action_up-status" style="width:200px;">{{attaItem.upload_on}}</span>
                   <a target="_blank" :href="attaItem.attachment_url" v-if="attaItem.attachment_type=='pdf'||attaItem.attachment_type=='txt'||attaItem.attachment_type=='jpg'||attaItem.attachment_type=='png'||attaItem.attachment_type=='jpeg'" class="el-icon-reading preview"></a>
                   <span class="el-icon-reading preview" @click="officePreView(attaItem.attachment_url,attaItem.attachment_name,attaItem.attachment_type)"   v-else-if="attaItem.attachment_type.toLowerCase() == 'doc'||attaItem.attachment_type.toLowerCase() == 'docx'||attaItem.attachment_type.toLowerCase() == 'ppt'||attaItem.attachment_type.toLowerCase() == 'pptx'||attaItem.attachment_type.toLowerCase() == 'xls'||attaItem.attachment_type.toLowerCase() == 'xlsx'"></span>
-                   <span class="el-icon-reading preview" @click="videoPreView(attaItem.attachment_url,attaItem.attachment_name,attaItem.attachment_type)"   v-else-if="attaItem.attachment_type.toLowerCase() == 'avi'||attaItem.attachment_type.toLowerCase() == 'mov'||attaItem.attachment_type.toLowerCase() == 'rmvb'||attaItem.attachment_type.toLowerCase() == 'rm'||attaItem.attachment_type.toLowerCase() == 'flv'||attaItem.attachment_type.toLowerCase() == 'mp4'||attaItem.attachment_type.toLowerCase() == '3gp'"></span>
-                    <span  v-else class="el-icon-reading preview" style="color: gainsboro;"></span>
+                  <span class="el-icon-reading preview" @click="videoPreView(attaItem.attachment_url,attaItem.attachment_name,attaItem.attachment_type)"   v-else-if="attaItem.attachment_type.toLowerCase() == 'avi'||attaItem.attachment_type.toLowerCase() == 'mov'||attaItem.attachment_type.toLowerCase() == 'rmvb'||attaItem.attachment_type.toLowerCase() == 'rm'||attaItem.attachment_type.toLowerCase() == 'flv'||attaItem.attachment_type.toLowerCase() == 'mp4'||attaItem.attachment_type.toLowerCase() == '3gp'"></span>
+                  <span  v-else class="el-icon-reading preview" style="color: gainsboro;"></span>
                   <span v-if="if_download" class="el-icon-download preview" style="margin-left:10px;" @click="downloadSingle(attaItem.attachment_url,attaItem.attachment_name)"></span>
                   <span v-else class="el-icon-download preview" style="margin-left:5px; color:#ccc" @click="return false;"></span>
                 </span>

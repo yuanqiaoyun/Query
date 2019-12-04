@@ -83,7 +83,7 @@ var newAdd = new Vue({
             if (vueData.formData.directoryId) {
                 //调接口 获取到的而路径复制给formData.contentInDir;
                 $.ajax({
-                    url: '/ISV/kms/api/Directory/GetDirctoryByChildId?Id=' + vueData.formData.directoryId,
+                    url: 'http://10.151.66.61:8099/api/Directory/GetDirctoryByChildId?Id=' + vueData.formData.directoryId,
                     type: 'get',
                     success: function (res) {
                         vueData.formData.contentInDir = res.responseData;
@@ -100,7 +100,7 @@ var newAdd = new Vue({
         },
         //2.获取目录文件数据
         getContentList() {
-            axios.get('/ISV/kms/api/Directory/GetDirctory').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Directory/GetDirctory').then(function (res) {
                 vueData.treeContent = res.data.responseData;
             }).catch((function (err) {
                 newAdd.$message({ message: err.statusText, type: 'error' });
@@ -108,7 +108,7 @@ var newAdd = new Vue({
         },
         //3.获取产品线
         getprdtList() {
-            axios.get('/ISV/kms/api/Basic/GetProductList').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Basic/GetProductList').then(function (res) {
                 vueData.prdtLines = res.data.responseData;
                 vueData.formData.prdtLine = res.data.responseData[0].name;
                 vueData.formData.prdtLineId = res.data.responseData[0].id;
@@ -120,7 +120,7 @@ var newAdd = new Vue({
         },
         //4.获取品牌
         getBrandsList(id) {
-            axios.get('/ISV/kms/api/Basic/GetBrandtList?productId=' + id + '').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Basic/GetBrandtList?productId=' + id + '').then(function (res) {
                 vueData.brands = res.data.responseData;
                 vueData.formData.brand = res.data.responseData[0].brand_name;
                 vueData.formData.brand_no = res.data.responseData[0].brand_no;
@@ -164,13 +164,19 @@ var newAdd = new Vue({
         //7.点击保存按钮
         handleSaveClick(formName) {
             var that = newAdd;
-           
+            var curDate = moment().format("YYYY-MM-DD");
             that.$refs[formName].validate(function (valid) {
                 //  console.log("表格valid",valid);
                 if (valid) {
+                    if(moment(vueData.formData.deadline).isBefore(curDate)){
+                        return that.$message({
+                            message: '保存失败,有效期不合格',
+                            type: 'warning'
+                        });
+                    }
                     
                     $.ajax({
-                        url: '/ISV/kms/api/Material/CreateMaterial',
+                        url: 'http://10.151.66.61:8099/api/Material/CreateMaterial',
                         type: 'post',
                         data: {
 
@@ -222,7 +228,7 @@ var newAdd = new Vue({
             formData.append("id", id);
             formData.append("userid", userid);
             $.ajax({
-                url: '/ISV/kms/api/Material/UploadSingleMaterial', /*接口域名地址*/
+                url: 'http://10.151.66.61:8099/api/Material/UploadSingleMaterial', /*接口域名地址*/
                 type: 'post',
                 data: formData,
                 contentType: false,
@@ -261,7 +267,19 @@ var newAdd = new Vue({
             window.sessionStorage.setItem('If_author', '1');
             window.sessionStorage.setItem('If_read_flag', '1');
             window.sessionStorage.setItem('If_download_flag', '1');
-            window.location.href = "EditForm.aspx";
+            window.location.href = "file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/EditForm.html";
+        },
+        //选择日期变化
+        hadnldeDatePickChange(value){
+           console.log(value);
+           var curDate = moment().format("YYYY-MM-DD");
+           if(moment(value).isBefore(curDate)){
+            this.$message({
+                message: '选择的日期无效',
+                type: 'warning'
+              });
+           };
+           vueData.formData.deadline = value;
         }
     }
 })

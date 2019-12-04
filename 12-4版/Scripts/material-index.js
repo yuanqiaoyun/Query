@@ -9,7 +9,7 @@ var vueData = {
     materialdirectoryid: "", //当前节点的目录的id
     sapcompanycode: "1122", //tab选中项
     userRole: null, //用户角色:根据角色来判断该用户是否可以调用右击快捷键
-    userId: "", //userId 用户角色
+    userId: "", //userId 用户角色 2FC6451A-6A73-E811-80C7-8BF578CAAADF
     if_create_flag: false,
     // tableData:[{
     //   upDate: '2016-05-02',
@@ -60,7 +60,6 @@ var app = new Vue({
     data: vueData,
     created() {
         this.getUserId();
-        vueData.curDate = new Date();
         //获取目录文件
         this.getContentList();
         //获取资料文件
@@ -70,18 +69,21 @@ var app = new Vue({
         //所有的点击函数和界面函数事件都放在这里
         //一进页面获取用户id，并根据用户ID 获取用户角色
         getUserId() {
+            console.log("methods里边打印this",this);
             var that = app;
-            $.ajax({
-                url: "/ISV/kms/api/Crm/GetCurrentUser",
-                type: "get",
-                success: function (res) {
-                    vueData.userId = res.responseData.UserId;
-                    app.getUserRole(res.responseData.UserId);
-                },
-                error: function (err) {
-                    app.$message({ message: "获取用户信息失败", type: 'error' });
-                }
-            });
+             vueData.userId = '2FC6451A-6A73-E811-80C7-8BF578CAAADF';  //2FC6451A-6A73-E811-80C7-8BF578CAAADF res.responseData.UserId
+             this.getUserRole('2FC6451A-6A73-E811-80C7-8BF578CAAADF');
+            // $.ajax({
+            //     url: "http://10.151.66.61:8099/api/Crm/GetCurrentUser",
+            //     type: "get",
+            //     success: function (res) {
+            //         vueData.userId = '2FC6451A-6A73-E811-80C7-8BF578CAAADF';  //2FC6451A-6A73-E811-80C7-8BF578CAAADF res.responseData.UserId
+            //         app.getUserRole('2FC6451A-6A73-E811-80C7-8BF578CAAADF');
+            //     },
+            //     error: function (err) {
+            //         app.$message({ message: "获取用户信息失败", type: 'error' });
+            //     }
+            // });
         },
 
         //资料内容创建权限
@@ -90,7 +92,7 @@ var app = new Vue({
             var that = app;
             $.ajax({
                 url:
-                    "/ISV/kms/api/Crm/GetCurrentUserRole?id=" +
+                    "http://10.151.66.61:8099/api/Crm/GetCurrentUserRole?id=" +
                     userId +
                     "",
                 type: "get",
@@ -112,9 +114,9 @@ var app = new Vue({
         //2.获取目录文件数据
         getContentList() {
             axios
-                .get("/ISV/kms/api/Directory/GetDirctory")
+                .get("http://10.151.66.61:8099/api/Directory/GetDirctory")
                 .then(function (res) {
-                    console.log(res);
+                    // console.log(res);
                     vueData.treeContent = res.data.responseData;
                     vueData.materialdirectoryid = res.data.responseData[0].id;
                 })
@@ -127,7 +129,7 @@ var app = new Vue({
             vueData.tableData.splice(vueData.selectedIndex, 1);
             $.ajax({
                 url:
-                    "/ISV/kms/api/Material/DisabledMaterial?id=" +
+                    "http://10.151.66.61:8099/api/Material/DisabledMaterial?id=" +
                     vueData.selectedMateriald +
                     "&userid=" +
                     userId +
@@ -237,7 +239,7 @@ var app = new Vue({
             const userId = vueData.userId;
             axios
                 .get(
-                    "/ISV/kms/api/Material/GetList?sapcompanycode=" +
+                    "http://10.151.66.61:8099/api/Material/GetList?sapcompanycode=" +
                     compCode +
                     "&materialdirectoryid=" +
                     materialdirectoryid +
@@ -264,7 +266,7 @@ var app = new Vue({
 
         //6.跳转到新建资料页面去
         toNewAdd() {
-            window.open("Materials/InsertForm.aspx?userid=" + vueData.userId + "&materialDirId=" + vueData.materialdirectoryid);
+            window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/InsertForm.html?userid=" + vueData.userId + "&materialDirId=" + vueData.materialdirectoryid);
         },
         //7.处理右键点击的函数
         handleRightClick(clickMark, actionName, dataId, parentId, dataName, level) {
@@ -339,7 +341,7 @@ var app = new Vue({
                         }
                         if (value.action == "confirm") {
                             $.ajax({
-                                url: "/ISV/kms/api/Directory/CreateDirectory",
+                                url: "http://10.151.66.61:8099/api/Directory/CreateDirectory",
                                 type: "post",
                                 // 设置的是请求参数
                                 data: {
@@ -373,7 +375,7 @@ var app = new Vue({
             vueData.curDataId = dataId;
             //查询是否存在子目录以及资料
             $.ajax({
-                url: '/ISV/kms/api/Directory/QueryDirectorySource?id=' + dataId + '',
+                url: 'http://10.151.66.61:8099/api/Directory/QueryDirectorySource?id=' + dataId + '',
                 type: 'get',
                 success: function (res) {
                     //
@@ -401,7 +403,7 @@ var app = new Vue({
             var userId = vueData.userId;
             $.ajax({
                 url:
-                    "/ISV/kms/api/Directory/DeleteDirectory?id=" +
+                    "http://10.151.66.61:8099/api/Directory/DeleteDirectory?id=" +
                     dataId +
                     "&userid=" +
                     userId +
@@ -438,7 +440,7 @@ var app = new Vue({
             var name = vueData.reName;
             var userId = vueData.userId;
             $.ajax({
-                url: "/ISV/kms/api/Directory/RenameDirectory",
+                url: "http://10.151.66.61:8099/api/Directory/RenameDirectory",
                 type: "post",
                 // 设置的是请求参数
                 data: {
@@ -467,12 +469,13 @@ var app = new Vue({
             window.sessionStorage.setItem('If_author', row.If_author);
             window.sessionStorage.setItem('If_read_flag', row.If_read_flag);
             window.sessionStorage.setItem('If_download_flag', row.If_download_flag);
-            window.open("Materials/ViewForm.aspx");
+            // window.open("Materials/ViewForm.aspx");
+            window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/ViewForm.html");
         },
         handleEdit(row) {
 
             $.ajax({
-                url: "/ISV/kms/api/Material/GetMaterialState?id=" + row.id + "&userid=" + vueData.userId,
+                url: "http://10.151.66.61:8099/api/Material/GetMaterialState?id=" + row.id + "&userid=" + vueData.userId,
                 type: "post",
                 success: function (res) {
                     if (res.responseStatus == "S") {
@@ -489,11 +492,12 @@ var app = new Vue({
                             window.sessionStorage.setItem('If_author', row.If_author);
                             window.sessionStorage.setItem('If_read_flag', row.If_read_flag);
                             window.sessionStorage.setItem('If_download_flag', row.If_download_flag);
-                            window.open("Materials/EditForm.aspx");
+                            // window.open("Materials/EditForm.aspx");
+                            window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/EditForm.html"); //本地编辑页面
                         }
                         if (!if_edit_state) {//未编辑
                             $.ajax({
-                                url: "/ISV/kms/api/Material/UpdateMaterialState?id=" + row.id + "&userid=" + vueData.userId + "&if_edit_state=true",
+                                url: "http://10.151.66.61:8099/api/Material/UpdateMaterialState?id=" + row.id + "&userid=" + vueData.userId + "&if_edit_state=true",
                                 type: "post",
                                 success: function (res) {
                                     if (res.responseStatus == "S") {
@@ -503,7 +507,7 @@ var app = new Vue({
                                         window.sessionStorage.setItem('If_author', row.If_author);
                                         window.sessionStorage.setItem('If_read_flag', row.If_read_flag);
                                         window.sessionStorage.setItem('If_download_flag', row.If_download_flag);
-                                        window.open("Materials/EditForm.aspx");
+                                        window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/Query/12-4%E7%89%88/Pages/Materials/EditForm.html");
                                     }
                                     else {
                                         app.$message({ message: "资料状态更新接口失败", type: 'error' });
@@ -533,9 +537,9 @@ var app = new Vue({
             vueData.searchDirectory = value;
         },
         handleSearchClick() {
-
+            var cur_date = moment().format("YYYY-MM-DD");
             $.ajax({
-                url: "/ISV/kms/api/Material/Search",
+                url: "http://10.151.66.61:8099/api/Material/Search",
                 type: "post",
                 data: {
                     "sapCompanyCode": vueData.sapcompanycode,
@@ -548,6 +552,15 @@ var app = new Vue({
                 },
                 success: function (res) {
                     if (res.responseStatus == "S") {
+                        if (res.responseData.length > 0) {
+                            res.responseData.forEach(item => {
+                                if (moment(item.validity_date).isBefore(cur_date)) {
+                                    item.isOutDate = true;
+                                } else {
+                                    item.isOutDate = false;
+                                }
+                            });
+                        }
                         vueData.tableData = res.responseData;
                     }
                     else {
