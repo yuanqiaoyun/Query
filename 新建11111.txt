@@ -28,4 +28,6 @@
 {name: "服务仓库修改", roleid: "2a5a518b-c404-e911-80c3-d28c2016458e", if_select_flag: 0},
 {name: "客服-科长", roleid: "31a3c48c-f574-e811-80c7-822b5c0c59bf", if_select_flag: 0},
 {name: "代理", roleid: "acac451a-6a73-e811-80c7-8bf578caaadf", if_select_flag: 0}
- ]
+ ],
+
+ // 资料的数据

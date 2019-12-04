@@ -2,6 +2,23 @@ body{
   background-color: #f2f2f2;
   font-family: "MicrosoftYahei";
 }
+/* t头部搜索框 */
+.searhContainer{
+  display: flex;
+  flex-direction: row-reverse;
+  padding:5px 0;
+}
+.search_tit,.search_directory{
+  width:150px;
+  margin-right: 10px;
+}
+.search_keywords{
+  width:300px;
+}
+.search_keywords .el-icon-search{
+  color:#0088ff;
+  cursor:pointer;
+}
 .el-tree-node__label {
     font-size: 15px;
 }

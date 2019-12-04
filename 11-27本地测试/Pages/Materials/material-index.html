@@ -14,6 +14,32 @@
 
 <body>
   <div id="app">
+    <div class="searhContainer">
+      <div class="search_keywords">
+          <el-input
+          placeholder="请搜索关键字"
+          v-model="searchKeyWords"
+         >
+          <i slot="suffix" class="el-input__icon el-icon-search" @click="handleSearchClick"></i>
+        </el-input>
+      </div>
+      <div class="search_directory">
+          <el-select v-model="searchDirectory"  @change="handleSearchDirectorychange">
+              <el-option value="" label="请选择"></el-option>
+              <el-option value="1" label="当前目录"></el-option>
+              <el-option value="2" label="当前目录及子目录"></el-option>
+              <el-option value="3" label="所有目录"></el-option>
+            </el-select>
+      </div>
+      <div class="search_tit">
+          <el-select v-model="searchTit" placeholder="请选择" @change="handleSearchTitchange">
+              <el-option value="" label="请选择"></el-option>
+              <el-option value="1" label="标题搜索"></el-option>
+              <el-option value="2" label="摘要搜索"></el-option>
+              <el-option value="3" label="附录搜索"></el-option>
+            </el-select>
+      </div>
+    </div>
     <el-row :gutter="20" style="margin: 0px auto;">
       <el-col :span="4">
         <div class="content" @contextmenu.prevent="handleContentBlankClick">
@@ -22,7 +48,12 @@
           </div>
           <div class="content-main">
             <el-tree :data="treeContent" :default-expanded-keys="expandedkeys" node-key="id" @node-expand="handleExpand" @node-collapse="handleCollapse" highlight-curren @node-click="handleNodeClick"
-              :props="defalutProps" @node-contextmenu="handleNodeContextMenu"></el-tree>
+              :props="defalutProps" @node-contextmenu="handleNodeContextMenu">
+              <span slot-scope="{ node, data }">
+                <span>{{data.name}}</span>
+                <span v-if="node.level!=1" style="margin-left:3px;color:#f00">{{data.quantity_expire==0||data.quantity_expire == null?'':data.quantity_expire}}</span>
+              </span>
+            </el-tree>
           </div>
         </div>
       </el-col>
@@ -64,7 +95,11 @@
               </el-table-column>
               <el-table-column prop="modifiedon" label="更新时间" align="center" sortable>
               </el-table-column>
-              <el-table-column prop="validity_date" label="有效期" align="center" sortable>
+              <el-table-column  label="有效期"  width="150" align="center" sortable>
+                  <template slot-scope="scope">
+                      <div v-if="scope.row.isOutDate" style="background:#f00;border-radius:2px;">{{scope.row.validity_date}}</div>
+                      <div v-else>{{scope.row.validity_date}}</div>
+                    </template>
               </el-table-column>
               <el-table-column label="操作" align="left" width="350">
                 <template slot-scope="scope">

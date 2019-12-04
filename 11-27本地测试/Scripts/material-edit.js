@@ -215,41 +215,48 @@ var vueData = {
     //      {value:'17:30',label:'17:30',},
     //  ],
      time:timeList(),
-     selectedtime:'', //选择的时间，
+     selectedtime:'08:30', //选择的时间，
      week:[
          {
              label:'星期一',
              value:'1',
+             isActive:false,
          },
          {
             label:'星期二',
             value:'2',
+            isActive:false,
         },
         {
             label:'星期三',
             value:'3',
+            isActive:false,
         },
         {
             label:'星期四',
             value:'4',
+            isActive:false,
         },
         {
             label:'星期五',
             value:'5',
+            isActive:false,
         },
         {
             label:'星期六',
             value:'6',
+            isActive:false,
         },
         {
             label:'星期日',
             value:'7',
+            isActive:false,
         },
      ],
      selectedWeek:'',
      day:day(),
      selectedDay:'', //选择的天
-     selectedDate:'' //单次选择的日期
+     selectedDate:'2019-12-23' //单次选择的日期
 };
 var materialEdit = new Vue({
     el: '#materialEdit',
@@ -420,7 +427,6 @@ var materialEdit = new Vue({
 
         //7.点击保存按钮
         cfmSaveMaterial(formName) {
-            vueData.saveVisible = true
             var that = materialEdit;
             var phone = vueData.phone;  //电话
             var week = vueData.selectedWeek; //每周选择的周几
@@ -443,69 +449,100 @@ var materialEdit = new Vue({
                     }
                     if(prompt == 2){
                          //单次
+                        if(!phone){
+                            alert("手机号不能为空");
+                        }
+                        if(!date){
+                            alert("日期不能为空");
+                        }
                         backPrompt = prompt;
                         backweek ="";
                         backday = date + timer;
                         backPhone = phone;
-                        if(!backPhone){
-                            materialEdit.$message({ message: "手机号不能为空", type: 'error',duration:0 });
-                        };
-                        if(!backday){
-                            materialEdit.$message({ message: "日期不能为空", type: 'error' ,duration:0});
-                        };
                     }
                     if(prompt == 3){
                         //每周
+                        if(!phone){
+                            return  materialEdit.$alert("手机号不能为空",'警告',{
+                                confirmButtonText: '知道了',
+                                showClose:false,
+                                callback :action=>{
+                                    return ;
+                                }
+                            })
+                        };
+                        if(!week){
+                            return  materialEdit.$alert("请确认是周几",'警告',{
+                                confirmButtonText: '知道了',
+                                showClose:false,
+                                callback :action=>{
+                                    return ;
+                                }
+                            })
+                        };
                         backPrompt = prompt;
-                        backweek = "";
-                        day = "9999-12-"+ week + timer;
-                        backPhone = phone;
-                        if(!backPhone){
-                            materialEdit.$message({ message: "手机号不能为空", type: 'error',duration:0 });
-                        };
-                        if(!backday){
-                            materialEdit.$message({ message: "日期不能为空", type: 'error' ,duration:0});
-                        };
+                        backweek = week;
+                        backday = "9999-12-31" + timer;
+                        backPhone = phone;    
                     }
                     if(prompt == 4){
                         //每月
+                        if(!phone){
+                            // materialEdit.$message({ message: "手机号不能为空", type: 'error',duration:0 });
+                          return  materialEdit.$alert("手机号不能为空",'警告',{
+                                confirmButtonText: '知道了',
+                                showClose:false,
+                                callback :action=>{
+                                    return ;
+                                }
+                            })
+                        };
+                        if(!day){
+                            return  materialEdit.$alert("必须选哪一天",'警告',{
+                                confirmButtonText: '知道了',
+                                showClose:false,
+                                callback :action=>{
+                                    return ;
+                                }
+                            })
+                        };
                         backPrompt = 4;
                         backweek ="";
                         backPhone = phone;
-                        day = "9999-12-"+ day +timer;
-                        if(!backPhone){
-                            materialEdit.$message({ message: "手机号不能为空", type: 'error',duration:0 });
-                        };
-                        if(!backday){
-                            materialEdit.$message({ message: "日期不能为空", type: 'error' ,duration:0});
-                        };
+                        backday = "9999-12-"+ day + timer;
+                        
                     }
-                    $.ajax({
-                        url: 'http://10.151.66.61:8099/api//Material/UpdateMaterial?id=' + vueData.materialId,
-                        type: 'post',
-                        data: {
-                            "material_directoryid": vueData.formData.directoryId,
-                            "name": vueData.formData.title,
-                            "material_abstract": vueData.formData.summary,
-                            "productgroupid": vueData.formData.prdtLineId,
-                            "competebrand": vueData.formData.brand_no,
-                            "validity_date": vueData.formData.deadline,
-                            "prompt": backPrompt,
-                            "week": backweek,
-                            "day": backday,
-                            "phone": backPhone,
-                            "userid": vueData.userId
-                        },
-                        success: function (res) {
-                            if (res.responseStatus != "S") {
-                                materialEdit.$message({ message: res.responseMsg, type: 'error' });
+                    else{
+                        // + vueData.materialId
+                        $.ajax({
+                            url: 'http://10.151.66.61:8099/api//Material/UpdateMaterial?id=3b9718f0-4512-ea11-80c9-dd15762e6a74' ,
+                            type: 'post',
+                            data: {
+                                "material_directoryid": vueData.formData.directoryId,
+                                "name": vueData.formData.title,
+                                "material_abstract": vueData.formData.summary,
+                                "productgroupid": vueData.formData.prdtLineId,
+                                "competebrand": vueData.formData.brand_no,
+                                "validity_date": vueData.formData.deadline,
+                                "prompt": backPrompt,
+                                "week": backweek,
+                                "day": backday,
+                                "phone": backPhone,
+                                "userid": vueData.userId
+                            },
+                            success: function (res) {
+                                if (res.responseStatus != "S") {
+                                    materialEdit.$message({ message: res.responseMsg, type: 'error' });
+                                }else{
+                                    vueData.saveVisible = true
+                                }
+                            },
+                            error: function (err) {
+                                materialEdit.$message({ message: err.statusText, type: 'error' });
                             }
-                        },
-                        error: function (err) {
-                            materialEdit.$message({ message: err.statusText, type: 'error' });
-                        }
-                    })
-                    console.log(vueData.formData);
+                        })
+                        console.log(vueData.formData);
+                    }  
                 } else {
                     vueData.saveVisible = false;
                     return that.$message({
@@ -517,7 +554,7 @@ var materialEdit = new Vue({
         },
         //8.根据后端返回的资料id qu 查询资料详情
         getMaterialDetail(materialId) {
-            axios.get('http://10.151.66.61:8099/api/Material/GetItem?materialid=' + materialId + '').then(function (res) {
+            axios.get('http://10.151.66.61:8099/api/Material/GetItem?materialid=3b9718f0-4512-ea11-80c9-dd15762e6a74').then(function (res) {
                 //  console.log(res.data.responseData);
                 vueData.formData.directoryId = res.data.responseData.material_directoryid;
                 vueData.formData.contentInDir = res.data.responseData.material_directory_name;
@@ -818,13 +855,13 @@ var materialEdit = new Vue({
         },
        //提醒设置JS
        handleDayClick(thisItem){
-           console.log(thisItem);
+        //    console.log(thisItem);
         //    item.isActive = true;
          vueData.day.forEach(item=>{
             item.isActive = false;
             if(item.value == thisItem.value){
                 thisItem.isActive = true;
-                thisItem.value = vueData.selectedDay;
+                vueData.selectedDay = thisItem.value;
             }
         })
        },
@@ -833,10 +870,10 @@ var materialEdit = new Vue({
                item.isActive = false;
                if(item.value == thisItem.value){
                    thisItem.isActive = true;
-                   thisItem.value = vueData.selectedWeek;
+                   vueData.selectedWeek  = thisItem.value ;
                }
            })
-       }
+       },
         
     }
 })

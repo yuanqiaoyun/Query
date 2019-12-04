@@ -1,4 +1,7 @@
 var vueData = {
+    searchTit:'',//标题搜索
+    searchDirectory:'',//目录搜索
+    searchKeyWords:'',// 搜索关键字
     expandedkeys:[],//
     treeContent: [], //树形目录文件数据
     defalutProps: {
@@ -217,6 +220,7 @@ var app = new Vue({
         },
         //5.获取表格资料的数据
         getMaterialList() {
+            var cur_date = moment().format("YYYY-MM-DD");
             const compCode = vueData.sapcompanycode;
             const materialdirectoryid = vueData.materialdirectoryid;
             const userId = vueData.userId;
@@ -231,7 +235,16 @@ var app = new Vue({
                     ""
                 )
                 .then(function (res) {
-                    vueData.tableData = res.data.responseData;
+                   
+                    res.data.responseData.forEach(item=>{
+                        if( moment(item.validity_date).isBefore(cur_date)){
+                            item.isOutDate = true;
+                        }else{
+                            item.isOutDate = false;
+                        }
+                    });
+                     vueData.tableData = res.data.responseData;
+                    //  console.log("资料",vueData.tableData);
                 })
                 .catch(function (err) {
                     console.log(err);
@@ -458,6 +471,22 @@ var app = new Vue({
             window.sessionStorage.setItem('If_download_flag', row.If_download_flag);
             // file:///D:/%E6%96%87%E6%A1%A3/AUX--All/11-26%20%E7%BB%88%E7%89%88/Pages/Materials/material-edit.html 编辑页面本地地址
             window.open("file:///D:/%E6%96%87%E6%A1%A3/AUX--All/11-26%20%E7%BB%88%E7%89%88/Pages/Materials/material-edit.html");
+        },
+        handleSearchTitchange(value){
+            vueData.searchTit = value;
+        },
+        handleSearchDirectorychange(value){
+            vueData.searchDirectory = value;
+        },
+        handleSearchClick(){
+            console.log({
+                searchTit:vueData.searchTit,
+                searchDirectory:vueData.searchDirectory,
+                kewords:vueData.searchKeyWords,
+            });
+            // $.ajax({
+            //     // url:'xxxxxx?tit=111&dir=222&key=你不知道'
+            // })
         }
     }
 });

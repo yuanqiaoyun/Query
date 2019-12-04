@@ -221,13 +221,14 @@
                            type="date"
                            placeholder="选择日期"
                            format="yyyy-MM-dd"
+                           value-format="yyyy-MM-dd"
                            class="clock-main_itemOpt">
                        </el-date-picker>
                         <ul  v-if="frequencyType == 3"  class="weekPickContainer">
-                          <li v-for="item in week" :key="item.value" class="weekPickContainer_item" v-bind:class="{ weekPickContainer_itemActive: item.isActive }" @click="handleWeekClick(item)">{{item.label}}</li>
+                          <li v-for="item in week" :key="item.value" class="weekPickContainer_item" v-bind:class="{weekPickContainer_itemActive: item.isActive}" @click="handleWeekClick(item)">{{item.label}}</li>
                         </ul>
                         <ul v-if="frequencyType == 4"  class="dayPickContainer">
-                            <li v-for="item in day" :key="item.value" class="dayPickContainer_item" v-bind:class="{dayPickContainer_itemActive : item.isActive }" @click="handleDayClick(item)">{{item.value}}</li>
+                            <li v-for="item in day" :key="item.value" class="dayPickContainer_item" v-bind:class="{dayPickContainer_itemActive : item.isActive }" @click="handleDayClick(item)">{{item.label}}</li>
                         </ul>
                       </div>
                  <div  class="clock-main_btm_right">
@@ -367,6 +368,7 @@
 </div>
 </body>
 <script src="../../Scripts/axios.min.js"></script>
+<script src="../../Scripts/moment.min.js"></script>
 <script src="../../Scripts/jquery.js"></script>
 <script src="../../Scripts/vue.js"></script>
 <script src="../../Scripts/element-ui.js"></script>
