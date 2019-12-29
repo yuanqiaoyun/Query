@@ -38,7 +38,7 @@ export default {
       //set是这个计算属性自己变化的时候也要引起别人的变化
       //这里如果只写来get方法的话就是所有选中的情况下它会选中，但是它选中上面的不会所有都选中。。
       get(){
-          return this.finishedCount === this.todos.length;
+          return this.finishedCount === this.todos.length && this.todos.length > 0;
       },
       set(value){
        this.isSelectAll(value);

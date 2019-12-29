@@ -14,10 +14,15 @@
 </template>
 
 <script>
+// 引入组件
 import ToDoHead from './components/toDolist/ToDoHead'
 import ToDoList from './components/toDolist/ToDoList'
 import ToDoFooter from './components/toDolist/ToDoFooter'
 
+/* 
+引入工具类。
+ */
+import localStroageUtil from './Utils/localStroageUtil';
 export default {
   name: 'app',
   components: {
@@ -27,7 +32,7 @@ export default {
   },
   data(){
       return {
-          todos:[
+         /*  todos:[
               {
               title:"今天的学习内容是组件通信",
               finished:false,
@@ -40,8 +45,11 @@ export default {
               title:"早上要先收一下金币",
               finished:true,
           }
-          ],
-          taskTitle:"",
+          ], 
+          1.这里要去localstorage中去取。
+          2.所以
+          */
+         todos:localStroageUtil.readTodo(),
       }
   },
   methods:{
@@ -83,6 +91,23 @@ export default {
     }
 
   },
+  watch:{
+    //监听数据todos的变化
+    /* 
+    1.监视什么属性或者什么数据，就写什么。
+    2.deep:true or false。 true表示深度监视，
+      若是对象数组的话，深度监视不仅能监听到数组的变化，还能监听到数组属性的值的变化。
+    3.immediate:true  or false.  true一进来就会调用内部的handler 函数。
+                                 false,只有监听到变化的时候才会执行这个函数里边的内容。
+     */
+    todos:{
+      handler:localStroageUtil.saveTodo,
+      //上边默认会把改变的todos传过去，所以也就写成了
+      //handler:localStroageUtil.saveTodo(),
+      deep:true,
+      immediate:true,
+    },
+  }
 }
 </script>
 
