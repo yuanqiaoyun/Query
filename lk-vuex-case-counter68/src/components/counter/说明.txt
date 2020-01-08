@@ -1,0 +1,30 @@
+在组件中拿到store中的值,看是什么情况了，
+如果是拿到store中的state的话，可以是在计算属性中去拿。
+computed：{
+  count(){
+    return this.$store.state.count;
+  }
+},
+
+同样的mutations中的东西的调用也是有两种方法，1中是import 然后利用ES6的语法来直接展开，
+然后就相当于是这个组件的东西了。
+例如 拿mutstions中的方法，
+
+在组件中 先引入
+import {mapMutations} from vuex;
+然后如果是属性的话就在competed中展开，如果是方法的话就在methods的话就在methonds中对应展开。
+methods:{
+  ...mapMutations(['方法名1']，['方法名2']),
+}
+ 还有第二种方式就是无需引入
+ 还是就上述例子中，
+ 在methonds中还可以用另一种方式去调用。。
+Counter 组件中<button @click="increment"></button>
+        methonds:{
+          increment(){
+            this.$store.commit('INCREMENT')
+            //这里因为是同步操作，所以放在了mutationsmutations 中了。
+            //其实如果是异步操作的话是需要在actionsactions 中去写的。此时，
+            //这里的调用就应该是 this.$store.dispitch('INCREMENT');
+          }
+        }
